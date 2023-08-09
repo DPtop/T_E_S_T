@@ -44,10 +44,10 @@ class AttackTower(Tower):
 #
 #
 
-tower = Tower(20, 60)
-heal_armor = Tower(5, 0)
-heal_health = Tower(0, 15)
-attack = AttackTower(50, 5, 25)
+tower = Tower(20, 60)             # башня с бронёй = 20 единиц и целостностью = 60 единиц
+heal_armor = Tower(5, 0)          # восстановить броню на 5 единиц
+heal_health = Tower(0, 15)        # восстановить башню на 15 единиц
+attack = AttackTower(50, 5, 25)   # стрелковая башня с атакой в 50 единиц
 
 while True:
     print('БАШНЯ доп.броня/целостность:', tower.armor, "..", tower.health)
