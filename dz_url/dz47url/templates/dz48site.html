@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    {% load static %}
+</head>
+<body>
+    <h1>{{title}}</h1>
+    <h3>Меню</h3>
+    {% for m in menu %}
+        <p>{{m}}</p>
+    {% endfor %}
+    <img src='{% static "img.png" %}'>
+    <p> description </p>
+</body>
+</html>
