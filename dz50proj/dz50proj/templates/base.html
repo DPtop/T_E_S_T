@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static '../static/css/style.css' %}">
+</head>
+<body>
+
+    <header style="width:100%; height=200px background-light-blue;">
+        HEADER
+        <ul class="nav-menu">
+            {% for elem in menu %}
+                <li><a href={{elem}} class="link">{{elem}}</a></li>
+            {% endfor %}
+        </ul>
+    </header>
+
+    <hr>
+    {% block content %}
+    {% endblock %}
+    <hr>
+
+    <footer style="width:100%; height=200px background-light-blue;">
+        FOOTER
+    </footer>
+
+</body>
+</html>

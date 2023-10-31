@@ -1,0 +1,29 @@
+/* base */
+ul{
+    list-style-type: none;
+    display: flex;
+}
+
+li{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.link{
+    text-decoration: none;  # убрать подчёркивание
+    color: inherit;         # убрать смену цвета (согласно действию с ссылкой)
+}
+
+.link:active{
+    color:orange;
+}
+
+/* default */
+text_def{
+    background-color: red;
+}
+
+/* page 1 */
+.img_page_1{
+    text-align: center;
+}
