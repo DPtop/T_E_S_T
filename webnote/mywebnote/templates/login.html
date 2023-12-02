@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block  content %}
+<link rel="stylesheet" href="{% static 'css/reg_log.css' %}">
+<form id="form"> <!--method="post" enctype="application/x-www-form-urlencoded">-->
+<!--    {% csrf_token %}-->
+    <fieldset class="form">
+        <b>LOGIN</b><hr>
+        <input class="enterfield" type="text" name="NickName" placeholder="NICK NAME"/>
+            <br>
+        <input class="enterfield" type="password" name="Password" placeholder="PASSWORD"/>
+            <br>
+        <input class="reglog" id="sent_data" type="submit" value="Login">
+            <br><hr>
+        <a href="../registration">Registration?</a>
+    </fieldset>
+</form>
+
+<script>
+<!--    form.addEventListener("submit", function() {-->
+<!--        let input = document.getElementsByClassName('enterfield');-->
+<!--        console.log('n::', input.NickName.value);-->
+<!--        console.log('p::', input.Password.value);-->
+<!--        input.NickName.value = 'poi'-->
+<!--        input.Password.value = '098';-->
+<!--    });-->
+
+    form.addEventListener("submit", function() {
+        let input = document.getElementsByClassName('enterfield');
+        let req = new XMLHttpRequest();
+        req.open('GET', '../my-endpoint/' +
+                        '?NickName=' + input.NickName.value +
+                        '?Password=' + input.Password.value, false);
+        req.send();
+    });
+</script>
+{% endblock %}

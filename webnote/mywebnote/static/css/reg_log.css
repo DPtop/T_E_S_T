@@ -1,0 +1,41 @@
+.form{
+    margin: auto;
+    margin-top: 4em;
+    background-color: #4F89BF;
+    text-align: center;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 78px;
+    color: #FFFFFF;
+    width: 700px;
+}
+
+b{
+    font-size: 64px;
+}
+
+hr{
+    font-size: 24px;
+    border-color: rgb(112, 112, 112);
+}
+
+.enterfield{
+    width: 533px;
+    height: 56px;
+    border-radius: 5px;
+    font-size: 36px;
+    text-indent: 5%;
+}
+
+.reglog{
+    width: 412px;
+    height: 56px;
+    border-radius: 5px;
+    font-size: 36px;
+    text-indent: 5%;
+    background-color: #00618A;
+    color: #FFFFFF;
+    border: hidden;
+}
