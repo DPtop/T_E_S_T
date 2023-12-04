@@ -1,0 +1,67 @@
+/* меню */
+.menu ul{
+  display: none;  /* скрывает подменю */
+  background-color: white;  /* #a8a8a8; */
+  position: absolute;
+}
+/* под меню */
+.menu li:hover ul{
+  display: block;   /* block вертикально показывает подменю */
+  outline: 2px solid #f90;
+}
+
+/* под-под меню */
+.menu-2 ul {
+  visibility: hidden;   /* hidden - скрыть */
+  background-color: white;
+}
+.menu-2 li:hover ul{
+  visibility: visible;  /* visible - показать */
+  display:flex;   /* flex горизонтальное под-под меню */
+  top: 0;  /* высота на уровне родителя */
+  left: 112px;  /* отступ слева от родителя -> чтоб показывалось справа от головного*/
+}
+
+/* под-под-под меню */
+.menu-3 ul{
+  display: none;
+  opacity: 0;   /* 0 - скрыть */
+  background-color: white;
+}
+.menu-3 li:hover ul{
+  display:block;
+  opacity: 1;   /* 1 - показать */
+  top: 30px;
+  left: 0px;    /* онулировать left: 112px; */
+}
+
+
+.menu, .menu ul{
+  margin: 0;
+  padding: 0;
+  list-style-type: none;  /* убирает маркеровку списка */
+}
+.menu {  /* размер и цвет меню */
+  height: 30px;
+  background-color: white;
+  padding-left: 25px;
+  min-width: 470px;
+}
+.menu li{
+  float: left;  /* горизонтальное положение меню */
+  position: relative;
+}
+.menu li a {
+  display: block;  /* блочный вид меню */
+  padding: 6px;
+  width: 100px;
+  color: #580808;
+  text-decoration: none;  /* убирает подчёркивание в надписях меню */
+  text-align: center;
+}
+.menu ul li { float: none; }
+.menu li:hover {
+    background-color: #f90;
+    outline: 2px solid #f90;
+}
+.menu ul li:hover { background-color: #f90; }
