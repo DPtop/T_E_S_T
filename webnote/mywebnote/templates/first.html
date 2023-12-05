@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block  content %}
+
+<style>
+    @font-face {
+        font-family: my_font; /* Гарнитура шрифта */
+        src: url({% static 'my_font/1isadora-m-bold.ttf' %}); /* Путь к файлу со шрифтом */
+    }
+    h1 {
+        text-align: center;
+        font-family: my_font;
+        font-size: 1000%;
+    }
+</style>
+<h1>
+    HELLO,<br>
+    WORLD!
+</h1>
+
+{% endblock %}

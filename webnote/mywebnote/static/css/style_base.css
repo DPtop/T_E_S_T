@@ -61,7 +61,7 @@
 }
 .menu ul li { float: none; }
 .menu li:hover {
-    background-color: #f90;
-    outline: 2px solid #f90;
+  background-color: #f90;
+  outline: 2px solid #f90;
 }
 .menu ul li:hover { background-color: #f90; }
