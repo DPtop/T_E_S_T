@@ -6,5 +6,5 @@ urlpatterns = [
     path('login/', mynote.login),
     path('registration/', mynote.registration),
     path('my-endpoint/', my_endpoint, name='my-endpoint'),
-    path('first/', mynote.first),
+    path('first/', mynote.first),   # start page
 ]
