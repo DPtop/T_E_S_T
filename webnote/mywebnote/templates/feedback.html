@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block  content %}
+<main role="main">
+    <div class="div_feedback">
+        <pre id="fileContent"></pre>
+    </div>
+
+
+    <form id="feedback">
+        <fieldset class="feedback">
+            <legend>Поле для жалоб и предложений:</legend>
+            <textarea class="textarea" name="feedtext" placeholder="Введите текст..."></textarea><br>
+            <input type="submit" value="Опубликовать" style="float:right;">
+        </fieldset>
+    </form>
+
+
+    <script>
+        /* чтение */
+        fetch('{% static "text/feedback.txt" %}')
+            .then(response => response.text())
+            .then(contents => {
+                document.getElementById("fileContent").textContent = contents;
+            })
+            .catch(error => {
+                console.log(error);
+            });
+
+        /* передача на запись */
+        feedback.addEventListener("submit", function() {
+            let input = document.getElementsByClassName('textarea');
+            let req = new XMLHttpRequest();
+            input.feedtext.value = input.feedtext.value.replace(/\n/g, '<br>');
+            req.open('GET', '../my-textarea/' + '?feedtext=' + input.feedtext.value + '.end', false);
+            req.send();
+        });
+    </script>
+</main>
+{% endblock %}

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+<meta charset=utf-8>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="{% static 'css/style_base.css' %}">
 </head>
 <body>
-    <header>H E A D E R
+    <header role="banner">H E A D E R
         <nav>
             <ul class="menu">
                 <li><a href="#">Меню1</a>
@@ -184,6 +185,21 @@
                     </ul>
                 </li>
 
+                <li><a href="#">Отзыв</a>
+                    <ul class="menu-2">
+                        <li><a href="#">Дальше...</a>
+
+                            <ul class="menu-3">
+                                <li><a href="#">Вот сюда...</a>
+                                    <ul>
+                                        <li><a href="../feedback">Ну, вот тут</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
                 <li style="float:right;"><a href="../first">Стартовая</a></li>
 
                 <li style="float:right;"><a href="#">Лог/Рег</a>
@@ -194,11 +210,11 @@
                 </li>
 
             </ul>
-        </nav>
+        </nav>/H E A D E R
     </header>
 
     {% block  content %} {% endblock %}
 
-    <footer>F O O T E R</footer>
+    <footer role="contentinfo">F O O T E R</footer>
 </body>
 </html>

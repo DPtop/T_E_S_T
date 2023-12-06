@@ -9,3 +9,6 @@ def registration(request):
 
 def first(request):
     return render(request, "first.html")  #http://127.0.0.1:8000/mywebnote/first/
+
+def feedback(request):
+    return render(request, "feedback.html")  #http://127.0.0.1:8000/mywebnote/feedback/

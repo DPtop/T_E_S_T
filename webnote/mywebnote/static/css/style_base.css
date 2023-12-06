@@ -1,4 +1,20 @@
-/* меню */
+/* Растягиваем body по высоте html */
+body {
+  margin: 0;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+
+/* main */
+main {
+  height: 80vh;
+}
+
+
+
+/* base: меню */
 .menu ul{
   display: none;  /* скрывает подменю */
   background-color: white;  /* #a8a8a8; */
@@ -65,3 +81,26 @@
   outline: 2px solid #f90;
 }
 .menu ul li:hover { background-color: #f90; }
+
+
+
+/* feedback */
+.div_feedback {
+  width: 100%;
+  height: 60vh;
+  background: #fff;
+  border: 1px solid #C1C1C1;
+  overflow: auto;
+}
+
+.feedback textarea {
+  width: 99%;
+  height: 10vh;
+  padding: 5px;
+  padding-right: auto;
+  padding-left: auto;
+  resize: none;
+}
+
+
+/*  */
