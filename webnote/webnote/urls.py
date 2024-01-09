@@ -21,5 +21,5 @@ from django.views.generic import RedirectView
 urlpatterns = [
     path('', RedirectView.as_view(url='mywebnote/first/', permanent=True)),
     path('mywebnote/', include('mywebnote.urls')),
-    path('admin/', admin.site.urls),
+    path('ad-min/', admin.site.urls),   # u: super, p: puper
 ]

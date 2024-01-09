@@ -29,7 +29,7 @@
         form.addEventListener("submit", function() {
             let input = document.getElementsByClassName('enterfield');
             let req = new XMLHttpRequest();
-            req.open('GET', '../my-logreg/' +
+            req.open('GET', '../CheckUser/' +
                             '?NickName=' + input.NickName.value + '.end1' +
                             '?Password=' + input.Password.value + '.end2', false);
             req.send();
