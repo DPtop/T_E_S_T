@@ -3,8 +3,7 @@
 {% block  content %}
 <main role="main">
     <link rel="stylesheet" href="{% static 'css/reg_log.css' %}">
-    <form id="form"> <!--method="post" enctype="application/x-www-form-urlencoded">-->
-    <!--    {% csrf_token %}-->
+    <form id="form">
         <fieldset class="form">
             <b>LOGIN</b><hr>
             <input class="enterfield" type="text" name="NickName" placeholder="NICK NAME"/>
@@ -17,7 +16,8 @@
         </fieldset>
     </form>
 
-    <script>
+
+    <script type="text/javascript">
     <!--    form.addEventListener("submit", function() {-->
     <!--        let input = document.getElementsByClassName('enterfield');-->
     <!--        console.log('n::', input.NickName.value);-->
@@ -34,6 +34,21 @@
                             '?Password=' + input.Password.value + '.end2', false);
             req.send();
         });
+    </script>
+
+
+    <script type="text/javascript">
+        let data = JSON.parse("{{data|escapejs}}");
+        console.log('data:', data);
+        for(x in data) {
+            console.log('x:', x);
+            if (x == 'the user is ok') {
+                document.location.href='../first';
+            }
+<!--            else if (x != '') {-->
+<!--                alert("Ник и/или Пароль НЕ совпадают!"); -->
+<!--            }-->
+        };
     </script>
 </main>
 {% endblock %}

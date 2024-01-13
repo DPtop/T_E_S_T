@@ -1,8 +1,13 @@
 from django.shortcuts import render
+from .checkuser import CheckUser
+from json import dumps
 
 # Create your views here.
 def login(request):
-    return render(request, "login.html")  # http://127.0.0.1:8000/mywebnote/login/
+    dataDictionary = {CheckUser(request): 'CheckUser_request'}
+    dataJSON = dumps(dataDictionary)
+    return render(request, "login.html", {'data': dataJSON})  # http://127.0.0.1:8000/mywebnote/login/
+    # return render(request, "login.html")  # http://127.0.0.1:8000/mywebnote/login/
 
 def registration(request):
     return render(request, "registration.html")  #http://127.0.0.1:8000/mywebnote/registration/

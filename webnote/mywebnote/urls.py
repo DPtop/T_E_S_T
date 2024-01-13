@@ -10,5 +10,5 @@ urlpatterns = [
     path('feedback/', mynote.feedback),
     # path('my-logreg/', my_logreg, name='my-logreg'),
     path('my-textarea/', my_textarea, name='my-textarea'),
-    path('CheckUser/', CheckUser),
+    path('CheckUser/', CheckUser, name='CheckUser'),
 ]
