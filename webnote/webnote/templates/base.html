@@ -185,7 +185,7 @@
                     </ul>
                 </li>
 
-                <li class="disabled_feedback"><a>Feedback</a>
+                <li class="disabled_feedback" id="feedback"><a>Feedback</a>
                     <ul class="menu-2">
                         <li><a>Дальше...</a>
 
@@ -212,4 +212,20 @@
 
     <footer role="contentinfo">F O O T E R</footer>
 </body>
+
+
+<script src="{% static 'js/base-login.js'%}"></script>
+<script type="text/javascript">
+    let bdata = o.a;
+    console.log('x_base:', bdata);
+    if (bdata == 'user ok') {
+        document.getElementById("feedback").style.pointerEvents = 'auto';
+        document.getElementById("feedback").style.opacity = 1;
+    }
+    else {
+        document.getElementById("feedback").style.pointerEvents = 'none';
+        document.getElementById("feedback").style.opacity = 0.2;
+    }
+</script>
+
 </html>

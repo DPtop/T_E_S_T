@@ -102,9 +102,10 @@ main {
 }
 
 
-/*  */
+/*
 .disabled_feedback {
   pointer-events: none; // disabled
   background-color: grey;
   opacity: 0.2; // прозрачность
 }
+*/

@@ -8,7 +8,7 @@ pass_word = str('')
 
 
 def CheckUser(request):
-    print('request :: ', request)
+    # print('request :: ', request)
     global nick_name, pass_word
     is_registered = str(request)
     is_registered = unquote(is_registered, 'utf-8')
@@ -34,7 +34,7 @@ def CheckUser(request):
             break
         else:
             i += 1
-    print('nick_name && pass_word ::', nick_name, pass_word)
+    # print('nick_name && pass_word ::', nick_name, pass_word)
     # проверка наличия в таблице sql
     with sqlite3.connect("db.sqlite3") as db:
         cur = db.cursor()
@@ -43,9 +43,11 @@ def CheckUser(request):
             # print(':sql:', 'id:', row[0], ', n:', row[1], ', p:', row[2])
             if row[1] == nick_name and row[2] == pass_word:
                 user = 'the user is ok'
-                print('user ::', user)
+                # print('user ::', user)
                 return user
+            elif nick_name == '' and pass_word == '':
+                user = ''
             else:
                 user = 'ABSENT'
-        print('user ::', user)
+        # print('user ::', user)
         return user

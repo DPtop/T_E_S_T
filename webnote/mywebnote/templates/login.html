@@ -6,9 +6,9 @@
     <form id="form">
         <fieldset class="form">
             <b>LOGIN</b><hr>
-            <input class="enterfield" type="text" name="NickName" placeholder="NICK NAME"/>
+            <input class="enterfield" id="nname" type="text" name="NickName" placeholder="NICK NAME"/>
                 <br>
-            <input class="enterfield" type="password" name="Password" placeholder="PASSWORD"/>
+            <input class="enterfield" id="passw" type="password" name="Password" placeholder="PASSWORD"/>
                 <br>
             <input class="reglog" id="sent_data" type="submit" value="Login">
                 <br><hr>
@@ -18,14 +18,6 @@
 
 
     <script type="text/javascript">
-    <!--    form.addEventListener("submit", function() {-->
-    <!--        let input = document.getElementsByClassName('enterfield');-->
-    <!--        console.log('n::', input.NickName.value);-->
-    <!--        console.log('p::', input.Password.value);-->
-    <!--        input.NickName.value = 'poi'-->
-    <!--        input.Password.value = '098';-->
-    <!--    });-->
-
         form.addEventListener("submit", function() {
             let input = document.getElementsByClassName('enterfield');
             let req = new XMLHttpRequest();
@@ -33,21 +25,29 @@
                             '?NickName=' + input.NickName.value + '.end1' +
                             '?Password=' + input.Password.value + '.end2', false);
             req.send();
+            // сокрытие NickName и Password в пути браузера
+            input.NickName.value = '*'.repeat(input.NickName.value.length);
+            input.Password.value = '*'.repeat(input.Password.value.length);
         });
     </script>
 
 
+    <script src="{% static 'js/base-login.js'%}"></script>
     <script type="text/javascript">
-        let data = JSON.parse("{{data|escapejs}}");
-        console.log('data:', data);
-        for(x in data) {
-            console.log('x:', x);
+        let ldata = JSON.parse("{{data|escapejs}}");
+        // console.log('data:', data);
+        for(x in ldata) {
+            // console.log('x:', x);
             if (x == 'the user is ok') {
+                alert(func_login(x));
+                o.b = x;
+                alert(o.a);
                 document.location.href='../first';
             }
-<!--            else if (x != '') {-->
-<!--                alert("Ник и/или Пароль НЕ совпадают!"); -->
-<!--            }-->
+            else if (x != '') {
+                document.getElementById('nname').placeholder = "The Nickname and/or Password";
+                document.getElementById('passw').placeholder = "do NOT match!";
+            }
         };
     </script>
 </main>
