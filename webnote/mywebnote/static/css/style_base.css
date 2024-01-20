@@ -67,7 +67,7 @@ main {
   float: left;  /* горизонтальное положение меню */
   position: relative;
 }
-.menu li a {
+.menu li a, p {
   display: block;  /* блочный вид меню */
   padding: 6px;
   width: 100px;
@@ -101,11 +101,10 @@ main {
   resize: none;
 }
 
-
-/*
-.disabled_feedback {
-  pointer-events: none; // disabled
-  background-color: grey;
-  opacity: 0.2; // прозрачность
+p {
+  margin: 0;
+  padding: 0;
 }
+/*
+
 */

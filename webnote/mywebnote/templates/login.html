@@ -15,40 +15,37 @@
             <a href="../registration">Registration?</a>
         </fieldset>
     </form>
-
-
-    <script type="text/javascript">
-        form.addEventListener("submit", function() {
-            let input = document.getElementsByClassName('enterfield');
-            let req = new XMLHttpRequest();
-            req.open('GET', '../CheckUser/' +
-                            '?NickName=' + input.NickName.value + '.end1' +
-                            '?Password=' + input.Password.value + '.end2', false);
-            req.send();
-            // сокрытие NickName и Password в пути браузера
-            input.NickName.value = '*'.repeat(input.NickName.value.length);
-            input.Password.value = '*'.repeat(input.Password.value.length);
-        });
-    </script>
-
-
-    <script src="{% static 'js/base-login.js'%}"></script>
-    <script type="text/javascript">
-        let ldata = JSON.parse("{{data|escapejs}}");
-        // console.log('data:', data);
-        for(x in ldata) {
-            // console.log('x:', x);
-            if (x == 'the user is ok') {
-                alert(func_login(x));
-                o.b = x;
-                alert(o.a);
-                document.location.href='../first';
-            }
-            else if (x != '') {
-                document.getElementById('nname').placeholder = "The Nickname and/or Password";
-                document.getElementById('passw').placeholder = "do NOT match!";
-            }
-        };
-    </script>
 </main>
+
+<script type="text/javascript">
+    form.addEventListener("submit", function() {
+        let input = document.getElementsByClassName('enterfield');
+        let req = new XMLHttpRequest();
+        req.open('GET', '../CheckUser/' +
+                        '?NickName=' + input.NickName.value + '.end1' +
+                        '?Password=' + input.Password.value + '.end2', false);
+        req.send();
+        // сокрытие NickName и Password в пути браузера
+        input.NickName.value = '*'.repeat(input.NickName.value.length);
+        input.Password.value = '*'.repeat(input.Password.value.length);
+    });
+</script>
+
+
+<!--<script src="{% static 'js/base-login.js' %}"></script>-->
+<script type="text/javascript">
+    let ldata = JSON.parse("{{data|escapejs}}");
+    // console.log('data:', data);
+    for(x in ldata) {
+        // console.log('x:', x);
+        if (x == 'the user is ok') {
+            document.cookie = "IsUserLogin=" + x + ";path=/";
+            document.location.href='../first';
+        }
+        else if (x != '') {
+            document.getElementById('nname').placeholder = "The Nickname and/or Password";
+            document.getElementById('passw').placeholder = "do NOT match!";
+        }
+    };
+</script>
 {% endblock %}

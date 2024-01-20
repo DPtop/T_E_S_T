@@ -17,3 +17,6 @@ def first(request):
 
 def feedback(request):
     return render(request, "feedback.html")  #http://127.0.0.1:8000/mywebnote/feedback/
+
+def main(request):
+    return render(request, "main.html")  #http://127.0.0.1:8000/mywebnote/main/
