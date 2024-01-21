@@ -1,7 +1,7 @@
 from django.urls import path
 import mywebnote.views as mynote
 from mywebnote.pymain import my_logreg, my_textarea
-from mywebnote.checkuser import CheckUser
+from mywebnote.check_user import CheckUser
 
 urlpatterns = [
     path('login/', mynote.login),

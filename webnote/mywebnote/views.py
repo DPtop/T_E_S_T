@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .checkuser import CheckUser
+from .check_user import CheckUser
 from json import dumps
 
 # Create your views here.

@@ -202,7 +202,7 @@
 
                 <li style="float:right;"><a href="../first">Home</a></li>
 
-                <li style="float:right;"><a href="../login"><p>Login</p></a></li>
+                <li style="float:right;" onclick="FuncLogOUT();"><a id="hrefLogin" href="#"><p>Login</p></a></li>
 
             </ul>
         </nav>/H E A D E R
@@ -212,34 +212,43 @@
 
     <footer role="contentinfo">F O O T E R</footer>
 
-<!--    <script src="{% static 'js/base-login.js' %}"></script>-->
     <script type="text/javascript">
-<!--        console.log('cookie:', document.cookie);-->
         let splitVal = document.cookie.split('; ');
+        let elementChange = document.querySelector('p');
+        let link = document.getElementById('hrefLogin');
+
+        // проверяем ответ на проверку юзера в куки
         for (let i = 0; i < splitVal.length; i++){
             if (splitVal[i].includes('IsUserLogin')){
                 splitVal = splitVal[i].split('=');
                 splitVal = splitVal[1];
-<!--                console.log('splitVal[1]:', splitVal)-->
             }
         }
 
-        let elementChange = document.querySelector('p');
+        // Login или Logout
         if (splitVal == 'the user is ok') {
             document.getElementById("feedback").style.pointerEvents = 'auto';
             document.getElementById("feedback").style.opacity = 1;
             elementChange.textContent = 'Logout';
+            link.setAttribute('href', '#');
         }
-<!--        else if (elementChange.textContent == 'Logout') {-->
-<!--            document.cookie.split(";").forEach(function(cookie) {-->
-<!--               let name = cookie.split("=")[0].trim();-->
-<!--               document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";-->
-<!--            });-->
-<!--        }-->
         else {
             document.getElementById("feedback").style.pointerEvents = 'none';
             document.getElementById("feedback").style.opacity = 0.2;
+            link.setAttribute('href', '../login');
         }
+
+        // очистка куки при Logout
+        function FuncLogOUT() {
+            if (elementChange.textContent === 'Logout'){
+                document.cookie.split(";").forEach(function(cookie) {
+                   let name = cookie.split("=")[0].trim();
+                   document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                });
+                location.reload();
+            }
+        }
+        console.log('document.cookie :: ', document.cookie);
     </script>
 </body>
 </html>

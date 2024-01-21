@@ -3,7 +3,7 @@
 {% block  content %}
 <main role="main">
     <link rel="stylesheet" href="{% static 'css/reg_log.css' %}">
-    <form id="form">
+    <form id="form" autocomplete="off">
         <fieldset class="form">
             <b>LOGIN</b><hr>
             <input class="enterfield" id="nname" type="text" name="NickName" placeholder="NICK NAME"/>
@@ -19,6 +19,7 @@
 
 <script type="text/javascript">
     form.addEventListener("submit", function() {
+        // передача ника и пароля из браузера
         let input = document.getElementsByClassName('enterfield');
         let req = new XMLHttpRequest();
         req.open('GET', '../CheckUser/' +
@@ -31,13 +32,10 @@
     });
 </script>
 
-
-<!--<script src="{% static 'js/base-login.js' %}"></script>-->
 <script type="text/javascript">
+    // check_user.py: проверка наличия в таблице sql
     let ldata = JSON.parse("{{data|escapejs}}");
-    // console.log('data:', data);
     for(x in ldata) {
-        // console.log('x:', x);
         if (x == 'the user is ok') {
             document.cookie = "IsUserLogin=" + x + ";path=/";
             document.location.href='../first';
