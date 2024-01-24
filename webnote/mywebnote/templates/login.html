@@ -25,7 +25,7 @@
         req.open('GET', '../CheckUser/' +
                         '?NickName=' + input.NickName.value + '.end1' +
                         '?Password=' + input.Password.value + '.end2', false);
-        req.send();
+        req.send();    // to CheckUser()
         // сокрытие NickName и Password в пути браузера
         input.NickName.value = '*'.repeat(input.NickName.value.length);
         input.Password.value = '*'.repeat(input.Password.value.length);
@@ -33,8 +33,8 @@
 </script>
 
 <script type="text/javascript">
-    // check_user.py: проверка наличия в таблице sql
-    let ldata = JSON.parse("{{data|escapejs}}");
+    // проверка наличия в таблице sql (check_user.py)
+    let ldata = JSON.parse("{{data|escapejs}}");    // from CheckUser()
     for(x in ldata) {
         if (x == 'the user is ok') {
             document.cookie = "IsUserLogin=" + x + ";path=/";

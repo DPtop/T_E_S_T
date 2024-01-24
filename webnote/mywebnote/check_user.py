@@ -4,10 +4,13 @@ from urllib.parse import unquote
 
 nick_name = str('')
 pass_word = str('')
+is_loggined = int(0)
 
 
 def CheckUser(request):
-    global nick_name, pass_word
+    global nick_name, pass_word, is_loggined
+    print('is_loggined 1:', is_loggined)
+
     is_registered = str(request)
     is_registered = unquote(is_registered, 'utf-8')
     # вычленяем ник и пароль
@@ -30,6 +33,7 @@ def CheckUser(request):
             break
         else:
             i += 1
+    print(nick_name, pass_word)
     # проверка наличия в таблице sql
     with sqlite3.connect("db.sqlite3") as db:
         cur = db.cursor()
@@ -37,8 +41,12 @@ def CheckUser(request):
         for row in result.fetchall():
             # print(':sql:', 'id:', row[0], ', n:', row[1], ', p:', row[2])
             if row[1] == nick_name and row[2] == pass_word:
-                user = 'the user is ok'
-                return user
+                if is_loggined < 2:
+                    user = 'the user is ok'
+                    is_loggined += 1
+                    return user
+                else:
+                    is_loggined = 0
             elif nick_name == '' and pass_word == '':
                 user = ''
             else:
