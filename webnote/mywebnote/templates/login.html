@@ -10,7 +10,7 @@
                 <br>
             <input class="enterfield" id="passw" type="password" name="Password" placeholder="PASSWORD"/>
                 <br>
-            <input class="reglog" id="sent_data" type="submit" value="Login">
+            <input class="log-reg" id="sent_data" type="submit" value="Login">
                 <br><hr>
             <a href="../registration">Registration?</a>
         </fieldset>
@@ -18,7 +18,7 @@
 </main>
 
 <script type="text/javascript">
-    form.addEventListener("submit", function() {
+    form.addEventListener("submit", function(){
         // передача ника и пароля из браузера
         let input = document.getElementsByClassName('enterfield');
         let req = new XMLHttpRequest();
@@ -27,20 +27,20 @@
                         '?Password=' + input.Password.value + '.end2', false);
         req.send();    // to CheckUser()
         // сокрытие NickName и Password в пути браузера
-        input.NickName.value = '*'.repeat(input.NickName.value.length);
-        input.Password.value = '*'.repeat(input.Password.value.length);
+        input.NickName.value = '*';
+        input.Password.value = '*';
     });
 </script>
 
 <script type="text/javascript">
     // проверка наличия в таблице sql (check_user.py)
     let ldata = JSON.parse("{{data|escapejs}}");    // from CheckUser()
-    for(x in ldata) {
+    for(x in ldata){
         if (x == 'the user is ok') {
-            document.cookie = "IsUserLogin=" + x + ";path=/";
-            document.location.href='../first';
+            document.cookie = "IsUserLogin=" + x + ";path=/";   // сохраняем в куки о том, что юзер из таблицы
+            document.location.href='../first';      // переход на первую страницу
         }
-        else if (x != '') {
+        else if (x != ''){
             document.getElementById('nname').placeholder = "The Nickname and/or Password";
             document.getElementById('passw').placeholder = "do NOT match!";
         }

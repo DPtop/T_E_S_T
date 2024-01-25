@@ -3,10 +3,10 @@
 {% block  content %}
 <main role="main">
     <link rel="stylesheet" href="{% static 'css/reg_log.css' %}">
-    <form id="form">
+    <form id="form" autocomplete="off">
         <fieldset class="form">
             <b>REGISTER</b><hr>
-            <input class="enterfield" type="text" name="NickName" placeholder="NICK NAME"/>
+            <input class="enterfield"  type="text" name="NickName" placeholder="NICK NAME"/>
                 <br>
 
             <input class="enterfield" type="text" name="Email" placeholder="EMAIL"/>
@@ -15,10 +15,41 @@
             <input class="enterfield" type="password" name="Password" placeholder="PASSWORD"/>
                 <br>
 
-            <input class="enterfield" type="password" name="Password" placeholder="REPEAT PASSWORD"/>
+            <input class="enterfield" type="password" name="RepPassword" placeholder="REPEAT PASSWORD"/>
                 <br>
-            <input class="reglog" type="submit" value="Register">
+            <input class="reg-log" type="submit" value="Register">
         </fieldset>
     </form>
 </main>
+
+<script type="text/javascript">
+    form.addEventListener("submit", function(e){
+        e.preventDefault(); // предотвращает обновление формы, дабы отработал код, по обработке, ниже
+        // Проверка совпадения Password & RepPassword
+        let input = document.getElementsByClassName('enterfield');
+        if (input.Password.value == input.RepPassword.value && input.Password.value != ''){
+            // передача ника, эмейла и пароля из браузера
+            let req = new XMLHttpRequest();
+            req.open('GET', '../AddUser/' +
+                            '?NickName=' + input.NickName.value + '.end1' +
+                            '?Password=' + input.Password.value + '.end2' +
+                            '?Email=' + input.Email.value + '.end3', false);
+            req.send();    // to AddUser()
+            // сокрытие NickName, Email и Password в пути браузера
+            input.NickName.value = '*';
+            input.Password.value = '*';
+            input.RepPassword.value = '*';
+            input.Email.value = '*';
+            // переход на первую страницу
+            document.location.href='../first';
+        }
+        else{
+            // сообщаем, что пароли не совпали через placeholder
+            input.Password.value = '';
+            input.RepPassword.value = '';
+            input.Password.placeholder = 'The Password and Repeat Password';
+            input.RepPassword.placeholder = 'do NOT match!';
+        }
+    });
+</script>
 {% endblock %}

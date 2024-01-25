@@ -126,7 +126,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 # *logging
-# Создаем фильтр, который будет сохранять только сообщения, содержащие "GET" и происходящие от StatReloader
+# Создаём фильтр, который будет сохранять только сообщения, содержащие "GET" и происходящие от StatReloader
 class MyFilter(logging.Filter):
     def filter(self, record):
         # Проверяем, содержит ли сообщение "GET" и происходит ли событие от StatReloader

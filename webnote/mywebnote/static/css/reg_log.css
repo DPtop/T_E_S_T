@@ -30,7 +30,18 @@ hr{
     text-indent: 5%;
 }
 
-.reglog{
+.log-reg{
+    width: 40vw;
+    height: 8vh;
+    border-radius: 5px;
+    font-size: 36px;
+    text-indent: 5%;
+    background-color: #0000CD;
+    color: #FFFFFF;
+    border: hidden;
+}
+
+.reg-log{
     width: 40vw;
     height: 8vh;
     border-radius: 5px;

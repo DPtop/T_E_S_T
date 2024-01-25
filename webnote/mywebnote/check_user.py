@@ -9,7 +9,6 @@ is_loggined = int(0)
 
 def CheckUser(request):
     global nick_name, pass_word, is_loggined
-    print('is_loggined 1:', is_loggined)
 
     is_registered = str(request)
     is_registered = unquote(is_registered, 'utf-8')
@@ -28,19 +27,17 @@ def CheckUser(request):
             pword_end = i
             pass_word = is_registered[pword_begin:pword_end]
             i = -1
-        # print(i)
         if i == -1:
             break
         else:
             i += 1
-    print(nick_name, pass_word)
+
     # проверка наличия в таблице sql
     with sqlite3.connect("db.sqlite3") as db:
         cur = db.cursor()
-        result = cur.execute("SELECT * FROM mywebnote_users;")
+        result = cur.execute("SELECT username, password FROM auth_user;")
         for row in result.fetchall():
-            # print(':sql:', 'id:', row[0], ', n:', row[1], ', p:', row[2])
-            if row[1] == nick_name and row[2] == pass_word:
+            if row[0] == nick_name and row[1] == pass_word:
                 if is_loggined < 2:
                     user = 'the user is ok'
                     is_loggined += 1
