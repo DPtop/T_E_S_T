@@ -2,22 +2,16 @@ from django.http import HttpResponse
 from urllib.parse import unquote
 
 
-# получение переменных из js: NickName, ...
-def my_logreg(request):
-    # print('request:', request)
-    return HttpResponse()
-
-
 # получение из js: feedback
 comm_from, comm_to = 0, 0
-def my_textarea(request):
+def my_feedback(request):
+    global comm_from, comm_to
     decode = unquote(str(request), 'cp1251')
     # выдёргиваем нужное
     comm_start = "?feedtext="
     comm_end = ".end"
     comm_nextline = '<br>'
     i = 0
-    global comm_from, comm_to
     while i < len(decode):
         if decode[i:i+10] == comm_start:
             comm_from = i + 10
@@ -35,5 +29,3 @@ def my_textarea(request):
     with open('mywebnote/static/text/feedback.txt', 'a') as file_feedback:
         file_feedback.write('\t' + comm_save + '\n\n')
     return HttpResponse()
-
-##

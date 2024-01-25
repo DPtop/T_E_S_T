@@ -30,7 +30,7 @@ hr{
     text-indent: 5%;
 }
 
-.log-reg{
+.logIn{
     width: 40vw;
     height: 8vh;
     border-radius: 5px;
@@ -41,13 +41,18 @@ hr{
     border: hidden;
 }
 
-.reg-log{
+.regLog{
     width: 40vw;
     height: 8vh;
     border-radius: 5px;
     font-size: 36px;
     text-indent: 5%;
-    background-color: #0000CD;
-    color: #FFFFFF;
+    background-color: #4169E1;
+    color: #0000CD;
     border: hidden;
+}
+
+.regLog:hover{
+    background-color: #0000CD;
+    color: #4169E1;
 }

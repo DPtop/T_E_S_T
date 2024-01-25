@@ -17,7 +17,7 @@
 
 
     <script>
-        /* чтение */
+        /* вычитка feedback.txt */
         fetch('{% static "text/feedback.txt" %}')
             .then(response => response.text())
             .then(contents => {
@@ -28,11 +28,11 @@
             });
 
         /* передача на запись */
-        feedback.addEventListener("submit", function() {
+        feedback.addEventListener("submit", function(){
             let input = document.getElementsByClassName('textarea');
             let req = new XMLHttpRequest();
             input.feedtext.value = input.feedtext.value.replace(/\n/g, '<br>');
-            req.open('GET', '../my-textarea/' + '?feedtext=' + input.feedtext.value + '.end', false);
+            req.open('GET', '../my_feedback/' + '?feedtext=' + input.feedtext.value + '.end', false);
             req.send();
         });
     </script>
