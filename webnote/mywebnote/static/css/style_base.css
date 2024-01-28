@@ -1,6 +1,6 @@
 /* Растягиваем body по высоте html */
 body {
-  margin: 0;
+  margin: 2px 0 0 0;
   min-height: 100%;
   display: grid;
   grid-template-rows: auto 1fr auto;
@@ -48,7 +48,7 @@ main {
   display:block;
   opacity: 1;   /* 1 - показать */
   top: 30px;
-  left: 0px;    /* онулировать left: 112px; */
+  left: 0;    /* онулировать left: 112px; */
 }
 
 

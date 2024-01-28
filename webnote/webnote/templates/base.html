@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/style_base.css' %}">
 </head>
 <body>
-    <header role="banner">H E A D E R
+    <header role="banner">
         <nav>
             <ul class="menu">
                 <li><a>Menu1</a>
@@ -200,21 +200,24 @@
                     </ul>
                 </li>
 
+                <li onclick="light_dark();"><a id="lightDark">Light</a></li>
+
                 <li style="float:right;"><a href="../first">Home</a></li>
 
-                <li style="float:right;" onclick="FuncLogOUT();"><a id="hrefLogin" href="#"><p>Login</p></a></li>
+                <li style="float:right;" onclick="FuncLogOUT();"><a id="hrefLogin" href="#"><p id="logInOut">Login</p></a></li>
 
             </ul>
-        </nav>/H E A D E R
+        </nav>
     </header>
 
     {% block  content %} {% endblock %}
 
     <footer role="contentinfo">F O O T E R</footer>
 
+
     <script type="text/javascript">
         let splitVal = document.cookie.split('; ');
-        let elementChange = document.querySelector('p');
+        let elementChange = document.getElementById('logInOut'); //querySelector('p');
         let link = document.getElementById('hrefLogin');
 
         // проверяем ответ на проверку юзера в куки
@@ -245,6 +248,33 @@
                    let name = cookie.split("=")[0].trim();
                    document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                 });
+                location.reload();
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        function light_dark(){
+            let button_LD = document.getElementById('lightDark');
+            // Получаем все элементы на странице
+            let elements = document.querySelectorAll('*');
+            if (button_LD.textContent == 'Light'){
+                // Изменяем цвет фона для каждого элемента
+                elements.forEach(element => {
+                    element.style.backgroundColor = '#2e2e2e';
+                    element.style.color = '#8a6c04';
+                    // только текст выделяется при наведении
+                    element.style.outlineColor = '#2e2e2e';
+                    element.addEventListener("mouseover", function() {
+                        element.style.color = '#f70a1a';
+                    });
+                    element.addEventListener("mouseout", function() {
+                        element.style.color = '#8a6c04';
+                    });
+                });
+                button_LD.textContent = 'Dark';
+            }
+            else{
                 location.reload();
             }
         }
