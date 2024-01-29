@@ -217,7 +217,6 @@
                 splitVal = splitVal[0];
             }
         }
-        console.log('splitVal !!', splitVal);
 
         // Login или Logout
         if (splitVal == 'the user is ok') {
@@ -241,7 +240,9 @@
             if (elementChange.textContent === 'Logout'){
                 document.cookie.split(";").forEach(function(cookie) {
                    let name = cookie.split("=")[0].trim();
-                   document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                   if (name == 'IsUserLogin'){
+                       document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                   }
                 });
                 //
                 let inputNickName = sessionStorage.getItem('inputNickName');

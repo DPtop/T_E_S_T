@@ -22,7 +22,9 @@ def feedback(request):
     with open('mywebnote/static/text/feedback.txt', 'r') as file:
         file_content = file.read()
     # Передаем содержимое файла в контексте шаблона
-    context = {'file_content': file_content}
+    encoded_string = file_content.encode('cp1251')
+    decoded_string = encoded_string.decode('utf-8')
+    context = {'file_content': decoded_string}
     return render(request, "feedback.html", context)  #http://127.0.0.1:8000/mywebnote/feedback/
 
 def some_page(request):

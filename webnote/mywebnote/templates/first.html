@@ -4,8 +4,6 @@
 <head>
     <script>
         let inputNickName = sessionStorage.getItem('inputNickName');
-        console.log('inputNickName>>', inputNickName, typeof(inputNickName));
-        //
         document.addEventListener('DOMContentLoaded', function() {
             let nick = document.querySelector('#nickn');
             if (inputNickName != 'null' && typeof(inputNickName) == 'string'){

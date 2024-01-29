@@ -17,14 +17,16 @@
 
 
     <script>
+        let inputNickName = sessionStorage.getItem('inputNickName');
         /* передача на запись */
         function setFeedback(){
             let input = document.querySelector('.textarea');
-            let req = new XMLHttpRequest();
-            if (input != ''){
-                input.value = input.value.replace(/\n/g, '<br>');
-                req.open('GET', '../my_feedback/' + '?feedtext=' + input.value + '.end', false);
-                req.send();
+            let xhr = new XMLHttpRequest();
+            if (input.textLength > 0){
+                input.value = input.value.replace(/\n/g, '<br>    ');
+                input.value = encodeURIComponent(input.value);  // не будет обрезать текст на символе '#'
+                xhr.open('GET', '../my_feedback/' + '?feedtext=' + inputNickName + ':<br>    ' + input.value + '.end', false);
+                xhr.send();
             }
         }
     </script>
