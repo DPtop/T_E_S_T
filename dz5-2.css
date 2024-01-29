@@ -1,0 +1,89 @@
+table{
+  overflow: hidden;
+}
+
+table, tr, td, th {
+  text-align: center;
+  border: 1px solid black;
+  border-collapse: collapse;
+  /* padding: 0; */
+  position: relative;
+}
+
+img{
+  width: 120px;
+  border-radius: 15%;
+  vertical-align: top;
+}
+
+td:hover{
+  background-color: rgb(255, 0, 0)
+}
+
+/* //Row */
+/* td:hover::before { 
+  background-color: #ff0000;
+  content: '';  
+  height: 100%;
+  left: -5000px;
+  position: absolute;  
+  top: 0;
+  width: 10000px;   
+  z-index: -2;        
+} */
+
+/* //Column */
+tr:hover:nth-child(2) td:hover:nth-child(n)::after,
+tr:hover:nth-child(1) th:hover:nth-child(n)::after{ 
+  background-color: rgb(255, 0, 0);
+  content: '';
+  height: 10000px;    
+  left: 0;
+  position: absolute;  
+  top: 0px;
+  width: 100%;
+  z-index: -1;        
+}
+
+tr:hover:nth-child(1) td:hover:nth-child(1)::after,
+tr:hover:nth-child(1) td:hover:nth-child(4)::after,
+tr:hover:nth-child(3) td:hover:nth-child(1)::after,
+tr:hover:nth-child(3) td:hover:nth-child(2)::after,
+tr:hover:nth-child(3) td:hover:nth-child(3)::after,
+tr:hover:nth-child(3) td:hover:nth-child(4)::after,
+tr:hover:nth-child(3) td:hover:nth-child(5)::after,
+tr:hover:nth-child(3) td:hover:nth-child(6)::after,
+tr:hover:nth-child(4) td:hover:nth-child(1)::after,
+tr:hover:nth-child(4) td:hover:nth-child(2)::after,
+tr:hover:nth-child(4) td:hover:nth-child(3)::after,
+tr:hover:nth-child(4) td:hover:nth-child(4)::after,
+tr:hover:nth-child(5) td:hover:nth-child(1)::after,
+tr:hover:nth-child(5) td:hover:nth-child(2)::after,
+tr:hover:nth-child(5) td:hover:nth-child(3)::after,
+tr:hover:nth-child(5) td:hover:nth-child(4)::after {
+  content: attr(text); /* Передаём текст */
+    position: absolute; /* Абсолютное позиционирование */
+    right: 0; bottom: 0; /* Положение подсказки */
+    z-index: 1; /* Отображаем подсказку поверх других элементов */
+    background: rgba(255,255,230,0.9); /* Полупрозрачный цвет фона */
+    font-family: Arial, sans-serif; /* Гарнитура шрифта */
+    font-size: 14px; /* Размер текста подсказки */
+    padding: 5px 10px; /* Поля */
+    border: 1px solid #333; /* Параметры рамки */
+}
+
+/* tr:hover:nth-child(1){
+  background-color: rgb(120, 250, 137);
+}
+tr:hover:nth-child(2){
+  background-color: aquamarine;
+}
+tr:hover:nth-child(3){
+  background-color: rgb(255, 246, 127);
+}
+tr:hover:nth-child(4){
+  background-color: rgb(136, 127, 255);
+}
+tr:hover:nth-child(5){
+  background-color: rgb(255, 127, 138);
+} */

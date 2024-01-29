@@ -1,7 +1,45 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block  content %}
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/some_page.css' %}">
+</head>
+
 <main role="main">
-    <h1>S O M E   P A G E</h1>
+    <table>
+        <tr><!--строка-->
+            <td rowspan="2" text="Тортик"><img src="{% static 'image/десерт_медовик_с_брусникой.jpg' %}"/></td><!--столбец-->
+            <th colspan="2">Холодные блюда</th>
+            <th colspan="2">Горячие блюда</th>
+            <td rowspan="2" text="Сырники"><img src="{% static 'image//десерт_сырники.jpg' %}"/></td>
+        </tr>
+        <tr style="font-family: cursive;">
+            <td>Салаты</td>
+            <td>Закуски</td>
+            <td>Первые <br> блюда</td>
+            <td>Вторые <br> блюда</td>
+        </tr>
+        <tr>
+            <td rowspan="3" text="Напиток"><img src="{% static 'image//напитки.jpg' %}"/></td>
+            <td text="Из свежих овощей"><img src="{% static 'image//салат_из_свеж_овощ.jpeg' %}"/></td>
+            <td text="Cырное ассорти"><img src="{% static 'image//закуски_сырное_ассорти.jpeg' %}"/></td>
+            <td text="Борщ"><img src="{% static 'image//первое_борщ.jpeg' %}"/></td>
+            <td text="Вареники с вишней"><img src="{% static 'image//второе-вареники-с-вишней.jpeg' %}"/></td>
+            <td rowspan="3" text="Пивасик"><img src="{% static 'image//напитки_пиво.jpg' %}"/></td>
+        </tr>
+        <tr>
+            <td text="Копчёная форель"><img src="{% static 'image//салат_копчён_форель.jpeg' %}"/></td>
+            <td text="Мясное ассорти"><img src="{% static 'image//закуски_мясное_ассорти.jpeg' %}"/></td>
+            <td text="Грибной суп"><img src="{% static 'image//первое_грибной_суп.jpeg' %}"/></td>
+            <td text="Котлета с грибным соусом и пюре"><img src="{% static 'image//второе_котлета_с_гриб_соус_и_пюре.jpeg' %}"/></td>
+        </tr>
+        <tr>
+            <td text="Ростбиф"><img src="{% static 'image//салат_с_ростбифом.jpeg' %}"/></td>
+            <td text="Домашние соленья"><img src="{% static 'image//закуски_домашние_соленья.jpeg' %}"/></td>
+            <td text="Уха"><img src="{% static 'image//первое_уха.jpeg' %}"/></td>
+            <td text="Пельмешки"><img src="{% static 'image//второе_пельмени.jpeg' %}"/></td>
+        </tr>
+    </table>
 </main>
 {% endblock %}

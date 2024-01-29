@@ -1,0 +1,64 @@
+table{
+  overflow: hidden;
+  margin: 0 auto;
+  margin-top: 10vw;
+}
+
+table, tr, td, th {
+  text-align: center;
+  border: 1px solid black;
+  border-collapse: collapse;
+  position: relative;
+}
+
+img{
+  width: 120px;
+  border-radius: 15%;
+  vertical-align: top;
+}
+
+td:hover{
+  background-color: #fa0;
+}
+
+
+/* //Column */
+tr:hover:nth-child(2) td:hover:nth-child(n)::after,
+tr:hover:nth-child(1) th:hover:nth-child(n)::after{ 
+  background-color: #fa0;
+  content: '';
+  height: 10000px;    
+  left: 0;
+  position: absolute;  
+  top: 0px;
+  width: 100%;
+  z-index: -1;        
+}
+
+tr:hover:nth-child(1) td:hover:nth-child(1)::after,
+tr:hover:nth-child(1) td:hover:nth-child(4)::after,
+tr:hover:nth-child(3) td:hover:nth-child(1)::after,
+tr:hover:nth-child(3) td:hover:nth-child(2)::after,
+tr:hover:nth-child(3) td:hover:nth-child(3)::after,
+tr:hover:nth-child(3) td:hover:nth-child(4)::after,
+tr:hover:nth-child(3) td:hover:nth-child(5)::after,
+tr:hover:nth-child(3) td:hover:nth-child(6)::after,
+tr:hover:nth-child(4) td:hover:nth-child(1)::after,
+tr:hover:nth-child(4) td:hover:nth-child(2)::after,
+tr:hover:nth-child(4) td:hover:nth-child(3)::after,
+tr:hover:nth-child(4) td:hover:nth-child(4)::after,
+tr:hover:nth-child(5) td:hover:nth-child(1)::after,
+tr:hover:nth-child(5) td:hover:nth-child(2)::after,
+tr:hover:nth-child(5) td:hover:nth-child(3)::after,
+tr:hover:nth-child(5) td:hover:nth-child(4)::after {
+  content: attr(text); /* Передаём текст */
+    position: absolute; /* Абсолютное позиционирование */
+    right: 0; bottom: 0; /* Положение подсказки */
+    z-index: 1; /* Отображаем подсказку поверх других элементов */
+    background: #2e2e2e; /* Цвет фона */
+    color: #f90; /* Цвет текста */
+    font-family: Arial, sans-serif; /* Гарнитура шрифта */
+    font-size: 14px; /* Размер текста подсказки */
+    padding: 5px 10px; /* Поля */
+    border: 1px solid #333; /* Параметры рамки */
+}

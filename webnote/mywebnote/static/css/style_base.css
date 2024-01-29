@@ -23,7 +23,7 @@ main {
 /* под меню */
 .menu li:hover ul{
   display: block;   /* block вертикально показывает подменю */
-  outline: 2px solid #f90;
+  outline: 2px solid #fa0;
 }
 
 /* под-под меню */
@@ -77,10 +77,11 @@ main {
 }
 .menu ul li { float: none; }
 .menu li:hover {
-  background-color: #f90;
-  outline: 2px solid #f90;
+  background-color: #fa0;
+  outline: 2px solid #fa0;
+  z-index: 1;
 }
-.menu ul li:hover { background-color: #f90; }
+.menu ul li:hover { background-color: #fa0; z-index: 1;}
 
 
 /* feedback */
