@@ -41,7 +41,7 @@ def CheckUser(request):
                 if is_loggined < 2:
                     user = 'the user is ok'
                     is_loggined += 1
-                    return user
+                    return f'{user}, {nick_name}'
                 else:
                     is_loggined = 0
             elif nick_name == '' and pass_word == '':

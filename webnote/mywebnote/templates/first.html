@@ -1,6 +1,22 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block  content %}
+<head>
+    <script>
+        let inputNickName = sessionStorage.getItem('inputNickName');
+        console.log('inputNickName>>', inputNickName, typeof(inputNickName));
+        //
+        document.addEventListener('DOMContentLoaded', function() {
+            let nick = document.querySelector('#nickn');
+            if (inputNickName != 'null' && typeof(inputNickName) == 'string'){
+                nick.innerText = `HELLO,\n${inputNickName}!`;
+            }
+            else{
+                nick.innerText = 'HELLO,\nWORLD!';
+            }
+        });
+    </script>
+</head>
 <main role="main">
     <style>
         @font-face {
@@ -13,9 +29,7 @@
             font-size: 1000%;
         }
     </style>
-    <h1>
-        HELLO,<br>
-        WORLD!
-    </h1>
+
+    <h1 id="nickn"></h1>
 </main>
 {% endblock %}

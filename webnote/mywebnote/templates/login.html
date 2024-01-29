@@ -36,9 +36,11 @@
     // проверка наличия в таблице sql (check_user.py)
     let ldata = JSON.parse("{{data|escapejs}}");    // from CheckUser()
     for(x in ldata){
-        if (x == 'the user is ok') {
-            document.cookie = "IsUserLogin=" + x + ";path=/";   // сохраняем в куки о том, что юзер из таблицы
-            document.location.href='../first';      // переход на первую страницу
+        x = x.split(', ');
+        if (x[0] == 'the user is ok') {
+            sessionStorage.setItem('inputNickName', x[1]); // сохраняем в sessionStorage и прочитаем в first.html
+            document.cookie = 'IsUserLogin=' + x + ';path=/'; // сохраняем в куки о том, что юзер из таблицы
+            document.location.href='../first'; // переход на первую страницу
         }
         else if (x != ''){
             document.getElementById('nname').placeholder = "The Nickname and/or Password";

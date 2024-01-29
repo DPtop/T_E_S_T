@@ -14,12 +14,12 @@
                 <li><a>Menu1</a>
 
                     <ul class="menu-2">
-                        <li><a href="../some_page">some_page</a>
+                        <li><a href="#">some...</a>
 
                             <ul class="menu-3">
-                                <li><a href="#">1-1-1</a>
+                                <li><a href="#">...</a>
                                     <ul>
-                                        <li><a href="#">1-1-1-1</a></li>
+                                        <li><a href="../some_page">...page</a></li>
                                         <li><a href="#">1-1-1-2</a></li>
                                         <li><a href="#">1-1-1-3</a></li>
                                     </ul>
@@ -185,20 +185,7 @@
                     </ul>
                 </li>
 
-                <li class="disabled_feedback" id="feedback"><a>Feedback</a>
-                    <ul class="menu-2">
-                        <li><a>Дальше...</a>
-
-                            <ul class="menu-3">
-                                <li><a>Вот сюда...</a>
-                                    <ul>
-                                        <li><a href="../feedback">Ну, вот тут</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
+                <li class="disabled_feedback" id="feedback"><a href="../feedback">Feedback</a></li>
 
                 <li onclick="light_dark();"><a id="lightDark">Light</a></li>
 
@@ -216,28 +203,36 @@
 
 
     <script type="text/javascript">
+        // Log-In/Out
         let splitVal = document.cookie.split('; ');
-        let elementChange = document.getElementById('logInOut'); //querySelector('p');
-        let link = document.getElementById('hrefLogin');
+        let elementChange = document.querySelector('#logInOut');
+        let link = document.querySelector('#hrefLogin');
 
         // проверяем ответ на проверку юзера в куки
         for (let i = 0; i < splitVal.length; i++){
             if (splitVal[i].includes('IsUserLogin')){
                 splitVal = splitVal[i].split('=');
                 splitVal = splitVal[1];
+                splitVal = splitVal.split(',');
+                splitVal = splitVal[0];
             }
         }
+        console.log('splitVal !!', splitVal);
 
         // Login или Logout
         if (splitVal == 'the user is ok') {
-            document.getElementById("feedback").style.pointerEvents = 'auto';
-            document.getElementById("feedback").style.opacity = 1;
+            try{
+                document.querySelector(".textarea").style.pointerEvents = 'auto';
+                document.querySelector(".textarea").style.opacity = 1;
+            } catch {  }
             elementChange.textContent = 'Logout';
             link.setAttribute('href', '#');
         }
         else {
-            document.getElementById("feedback").style.pointerEvents = 'none';
-            document.getElementById("feedback").style.opacity = 0.2;
+            try{
+                document.querySelector(".textarea").style.pointerEvents = 'none';
+                document.querySelector(".textarea").style.opacity = 0.2;
+            } catch {  }
             link.setAttribute('href', '../login');
         }
 
@@ -248,33 +243,78 @@
                    let name = cookie.split("=")[0].trim();
                    document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                 });
+                //
+                let inputNickName = sessionStorage.getItem('inputNickName');
+                sessionStorage.setItem('inputNickName', null);
+                //
                 location.reload();
             }
         }
     </script>
 
     <script type="text/javascript">
-        function light_dark(){
-            let button_LD = document.getElementById('lightDark');
-            // Получаем все элементы на странице
-            let elements = document.querySelectorAll('*');
-            if (button_LD.textContent == 'Light'){
-                // Изменяем цвет фона для каждого элемента
-                elements.forEach(element => {
-                    element.style.backgroundColor = '#2e2e2e';
-                    element.style.color = '#8a6c04';
-                    // только текст выделяется при наведении
-                    element.style.outlineColor = '#2e2e2e';
-                    element.addEventListener("mouseover", function() {
-                        element.style.color = '#f70a1a';
-                    });
-                    element.addEventListener("mouseout", function() {
-                        element.style.color = '#8a6c04';
-                    });
+        // Light/Dark стиль
+        // Получаем все элементы на странице
+        let button_LD = document.getElementById('lightDark');
+        let elem_feedback = document.querySelector('.feedback');
+        let elem_div_feedback = document.querySelector('.div_feedback');
+        let elements = document.querySelectorAll('*');
+
+        // Функция по смене Light/Dark
+        function LigDar(){
+            elements.forEach(element => {
+                element.style.backgroundColor = '#2e2e2e';
+                element.style.color = '#8a6c04';
+                // только текст выделяется при наведении
+                element.style.outlineColor = '#2e2e2e';
+                element.addEventListener("mouseover", function() {
+                    element.style.color = '#f90';
                 });
-                button_LD.textContent = 'Dark';
+                element.addEventListener("mouseout", function() {
+                    element.style.color = '#8a6c04';
+                });
+            });
+            // Проверяем можно ли, если есть...
+            try{
+                elem_feedback.style.borderColor = '#000';
+                elem_div_feedback.style.borderColor = '#000';
+            } catch {  }
+            // Меняем название с Light на Dark
+            button_LD.textContent = 'Dark';
+        }
+
+        // Для куки
+        let splitLight = document.cookie.split('; ');
+        // Проверка Light в куки
+        for (let i = 0; i < splitLight.length; i++){
+            if (splitLight[i].includes('Light')){
+                splitLight = splitLight[i].split('=');
+                splitLight = splitLight[1];
+            };
+        };
+
+        // Если Light=0 есть в куки
+        if (splitLight === '0'){
+            LigDar();
+        }
+
+        // По нажатию на Light/Dark
+        function light_dark(){
+            // Изменяем цвет фона для каждого элемента
+            if (button_LD.textContent == 'Light'){
+                LigDar();
+                // Сохраняем в куки значение button_LD.textContent в формате 0/1
+                document.cookie = "Light=0" + ";path=/";
             }
             else{
+                // Очистить куки от Light=0
+                document.cookie.split(";").forEach(function(cookie) {
+                   let name = cookie.split("=")[0].trim();
+                   if (name == 'Light'){
+                       document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                   }
+                });
+                // Обновить страницу
                 location.reload();
             }
         }
