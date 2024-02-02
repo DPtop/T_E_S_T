@@ -9,10 +9,10 @@
 <main role="main">
     <table>
         <tr><!--строка-->
-            <td rowspan="2" text="Тортик"><a id="m_cake" tagPrice="10"><img src="{% static 'image/десерт_медовик_с_брусникой.jpg' %}"/></a></td><!--столбец-->
+            <td rowspan="2" text="Тортик"><a class="eat_menu" tagPrice="10"><img src="{% static 'image/десерт_медовик_с_брусникой.jpg' %}"/></a></td><!--столбец-->
             <th colspan="2">Холодные блюда</th>
             <th colspan="2">Горячие блюда</th>
-            <td rowspan="2" text="Сырники"><a id="m_" tagPrice="10.5"><img src="{% static 'image//десерт_сырники.jpg' %}"/></a></td>
+            <td rowspan="2" text="Сырники"><a class="eat_menu" tagPrice="10.5"><img src="{% static 'image//десерт_сырники.jpg' %}"/></a></td>
         </tr>
         <tr style="font-family: cursive;">
             <td>Салаты</td>
@@ -43,15 +43,26 @@
     </table>
 
     <br>
-    <label id="valueLabel">
+    <label>
         Price: <label id="price"></label>
     </label>
 </main>
 
 <script type="text/javascript">
-    let m_cake = document.getElementById('m_cake');
+    let eatMenu = document.querySelectorAll('.eat_menu');
     let price = document.getElementById('price');
 
+    eatMenu.forEach( m_eat => {
+        m_eat.addEventListener('mouseover', function() {
+            price.textContent = m_eat.getAttribute('tagPrice');
+        });
+        m_eat.addEventListener('mouseout', function() {
+            price.textContent = '';
+        });
+    });
+
+    let m_cake = document.getElementById('m_cake');
+    let price = document.getElementById('price');
     m_cake.addEventListener('mouseover', function() {
         price.textContent = m_cake.getAttribute('tagPrice');
     });
