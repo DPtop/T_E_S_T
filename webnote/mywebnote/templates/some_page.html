@@ -60,14 +60,5 @@
             price.textContent = '';
         });
     });
-
-    let m_cake = document.getElementById('m_cake');
-    let price = document.getElementById('price');
-    m_cake.addEventListener('mouseover', function() {
-        price.textContent = m_cake.getAttribute('tagPrice');
-    });
-    m_cake.addEventListener('mouseout', function() {
-        price.textContent = '';
-    });
 </script>
 {% endblock %}
