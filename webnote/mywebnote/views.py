@@ -24,7 +24,7 @@ def feedback(request):
     # Передаем содержимое файла в контексте шаблона
     encoded_string = file_content.encode('cp1251')
     decoded_string = encoded_string.decode('utf-8')
-    context = {'file_content': decoded_string}
+    context = {'file_content': decoded_string}      # текст передаётся в теге <pre>file_content</pre>
     return render(request, "feedback.html", context)  #http://127.0.0.1:8000/mywebnote/feedback/
 
 def some_page(request):

@@ -9,10 +9,10 @@
 <main role="main">
     <table>
         <tr><!--строка-->
-            <td rowspan="2" text="Тортик"><img src="{% static 'image/десерт_медовик_с_брусникой.jpg' %}"/></td><!--столбец-->
+            <td rowspan="2" text="Тортик"><a id="m_cake" tagPrice="10"><img src="{% static 'image/десерт_медовик_с_брусникой.jpg' %}"/></a></td><!--столбец-->
             <th colspan="2">Холодные блюда</th>
             <th colspan="2">Горячие блюда</th>
-            <td rowspan="2" text="Сырники"><img src="{% static 'image//десерт_сырники.jpg' %}"/></td>
+            <td rowspan="2" text="Сырники"><a id="m_" tagPrice="10.5"><img src="{% static 'image//десерт_сырники.jpg' %}"/></a></td>
         </tr>
         <tr style="font-family: cursive;">
             <td>Салаты</td>
@@ -41,5 +41,22 @@
             <td text="Пельмешки"><img src="{% static 'image//второе_пельмени.jpeg' %}"/></td>
         </tr>
     </table>
+
+    <br>
+    <label id="valueLabel">
+        Price: <label id="price"></label>
+    </label>
 </main>
+
+<script type="text/javascript">
+    let m_cake = document.getElementById('m_cake');
+    let price = document.getElementById('price');
+
+    m_cake.addEventListener('mouseover', function() {
+        price.textContent = m_cake.getAttribute('tagPrice');
+    });
+    m_cake.addEventListener('mouseout', function() {
+        price.textContent = '';
+    });
+</script>
 {% endblock %}

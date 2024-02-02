@@ -16,7 +16,7 @@
     </form>
 
 
-    <script>
+    <script type="text/javascript">
         let inputNickName = sessionStorage.getItem('inputNickName');
         /* передача на запись */
         function setFeedback(){
@@ -25,10 +25,22 @@
             if (input.textLength > 0){
                 input.value = input.value.replace(/\n/g, '<br>    ');
                 input.value = encodeURIComponent(input.value);  // не будет обрезать текст на символе '#'
-                xhr.open('GET', '../my_feedback/' + '?feedtext=' + inputNickName + ':<br>    ' + input.value + '.end', false);
+                xhr.open('GET', '../my_feedback/'
+                                + '?feedtext='
+                                + inputNickName
+                                + ':<br>    '
+                                + input.value
+                                + '--hr--'
+                                + '.end', false);
                 xhr.send();
             }
         }
+    </script>
+
+    <script type="text/javascript">
+        let HR = document.getElementById('fileContent');
+        HR.innerHTML = HR.innerHTML.replace(/--hr--/g, '<hr>');
+        HR.innerHTML;
     </script>
 </main>
 {% endblock %}

@@ -4,7 +4,7 @@ table{
   margin-top: 10vw;
 }
 
-table, tr, td, th {
+table, tr, td, th{
   text-align: center;
   border: 1px solid black;
   border-collapse: collapse;
@@ -50,7 +50,7 @@ tr:hover:nth-child(4) td:hover:nth-child(4)::after,
 tr:hover:nth-child(5) td:hover:nth-child(1)::after,
 tr:hover:nth-child(5) td:hover:nth-child(2)::after,
 tr:hover:nth-child(5) td:hover:nth-child(3)::after,
-tr:hover:nth-child(5) td:hover:nth-child(4)::after {
+tr:hover:nth-child(5) td:hover:nth-child(4)::after{
   content: attr(text); /* Передаём текст */
     position: absolute; /* Абсолютное позиционирование */
     right: 0; bottom: 0; /* Положение подсказки */
