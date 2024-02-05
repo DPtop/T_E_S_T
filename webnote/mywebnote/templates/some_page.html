@@ -9,10 +9,10 @@
 <main role="main">
     <table>
         <tr><!--строка-->
-            <td rowspan="2" text="Тортик"><a class="eat_menu" tagPrice="10"><img src="{% static 'image/десерт_медовик_с_брусникой.jpg' %}"/></a></td><!--столбец-->
+            <td rowspan="2" text="Тортик"><a class="eat_menu" tagText="Тортик" tagPrice="10"><img src="{% static 'image/десерт_медовик_с_брусникой.jpg' %}"/></a></td><!--столбец-->
             <th colspan="2">Холодные блюда</th>
             <th colspan="2">Горячие блюда</th>
-            <td rowspan="2" text="Сырники"><a class="eat_menu" tagPrice="10.5"><img src="{% static 'image//десерт_сырники.jpg' %}"/></a></td>
+            <td rowspan="2" text="Сырники"><a class="eat_menu" tagText="Сырники" tagPrice="10.5"><img src="{% static 'image//десерт_сырники.jpg' %}"/></a></td>
         </tr>
         <tr style="font-family: cursive;">
             <td>Салаты</td>
@@ -21,44 +21,50 @@
             <td>Вторые <br> блюда</td>
         </tr>
         <tr>
-            <td rowspan="3" text="Напиток"><img src="{% static 'image//напитки.jpg' %}"/></td>
-            <td text="Из свежих овощей"><img src="{% static 'image//салат_из_свеж_овощ.jpeg' %}"/></td>
-            <td text="Cырное ассорти"><img src="{% static 'image//закуски_сырное_ассорти.jpeg' %}"/></td>
-            <td text="Борщ"><img src="{% static 'image//первое_борщ.jpeg' %}"/></td>
-            <td text="Вареники с вишней"><img src="{% static 'image//второе-вареники-с-вишней.jpeg' %}"/></td>
-            <td rowspan="3" text="Пивасик"><img src="{% static 'image//напитки_пиво.jpg' %}"/></td>
+            <td rowspan="3" text="Напиток"><a class="eat_menu" tagText="Напиток" tagPrice="11"><img src="{% static 'image//напитки.jpg' %}"/></a></td>
+            <td text="Из свежих овощей"><a class="eat_menu" tagText="Салат из свежих овощей" tagPrice="11.5"><img src="{% static 'image//салат_из_свеж_овощ.jpeg' %}"/></a></td>
+            <td text="Cырное ассорти"><a class="eat_menu" tagText="Cырное ассорти" tagPrice="12"><img src="{% static 'image//закуски_сырное_ассорти.jpeg' %}"/></a></td>
+            <td text="Борщ"><a class="eat_menu" tagText="Борщ" tagPrice="12.5"><img src="{% static 'image//первое_борщ.jpeg' %}"/></a></td>
+            <td text="Вареники с вишней"><a class="eat_menu" tagText="Вареники с вишней" tagPrice="13"><img src="{% static 'image//второе-вареники-с-вишней.jpeg' %}"/></a></td>
+            <td rowspan="3" text="Пивасик"><a class="eat_menu" tagText="Пивасик" tagPrice="13.5"><img src="{% static 'image//напитки_пиво.jpg' %}"/></a></td>
         </tr>
         <tr>
-            <td text="Копчёная форель"><img src="{% static 'image//салат_копчён_форель.jpeg' %}"/></td>
-            <td text="Мясное ассорти"><img src="{% static 'image//закуски_мясное_ассорти.jpeg' %}"/></td>
-            <td text="Грибной суп"><img src="{% static 'image//первое_грибной_суп.jpeg' %}"/></td>
-            <td text="Котлета с грибным соусом и пюре"><img src="{% static 'image//второе_котлета_с_гриб_соус_и_пюре.jpeg' %}"/></td>
+            <td text="Копчёная форель"><a class="eat_menu" tagText="Копчёная форель" tagPrice="14"><img src="{% static 'image//салат_копчён_форель.jpeg' %}"/></a></td>
+            <td text="Мясное ассорти"><a class="eat_menu" tagText="Мясное ассорти" tagPrice="14.5"><img src="{% static 'image//закуски_мясное_ассорти.jpeg' %}"/></a></td>
+            <td text="Грибной суп"><a class="eat_menu" tagText="Грибной суп" tagPrice="15"><img src="{% static 'image//первое_грибной_суп.jpeg' %}"/></a></td>
+            <td text="Котлета с грибным соусом и пюре"><a class="eat_menu" tagText="Котлета с грибным соусом и пюре" tagPrice="15.5"><img src="{% static 'image//второе_котлета_с_гриб_соус_и_пюре.jpeg' %}"/></a></td>
         </tr>
         <tr>
-            <td text="Ростбиф"><img src="{% static 'image//салат_с_ростбифом.jpeg' %}"/></td>
-            <td text="Домашние соленья"><img src="{% static 'image//закуски_домашние_соленья.jpeg' %}"/></td>
-            <td text="Уха"><img src="{% static 'image//первое_уха.jpeg' %}"/></td>
-            <td text="Пельмешки"><img src="{% static 'image//второе_пельмени.jpeg' %}"/></td>
+            <td text="Ростбиф"><a class="eat_menu" tagText="Ростбиф" tagPrice="16"><img src="{% static 'image//салат_с_ростбифом.jpeg' %}"/></a></td>
+            <td text="Домашние соленья"><a class="eat_menu" tagText="Домашние соленья" tagPrice="16.5"><img src="{% static 'image//закуски_домашние_соленья.jpeg' %}"/></a></td>
+            <td text="Уха"><a class="eat_menu" tagText="Уха" tagPrice="17"><img src="{% static 'image//первое_уха.jpeg' %}"/></a></td>
+            <td text="Пельмешки"><a class="eat_menu" tagText="Пельмешки" tagPrice="17.5"><img src="{% static 'image//второе_пельмени.jpeg' %}"/></a></td>
         </tr>
     </table>
 
+
     <br>
-    <label>
-        Price: <label id="price"></label>
+    <label class="price">
+        Цена: <label id="price"></label>
     </label>
+    <label class="total">
+        Итого: <label id="total"></label>
+    </label>
+    <label class="dishes">
+        Блюд: <label id="dishes"></label>
+    </label>
+
+
+    <br><br>
+    <button id="buttonModal" onclick="openModal()">Подробнее о заказе</button>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&#10007;</span>
+            <p id="showDishes"></p>
+        </div>
+    </div>
 </main>
 
-<script type="text/javascript">
-    let eatMenu = document.querySelectorAll('.eat_menu');
-    let price = document.getElementById('price');
 
-    eatMenu.forEach( m_eat => {
-        m_eat.addEventListener('mouseover', function() {
-            price.textContent = m_eat.getAttribute('tagPrice');
-        });
-        m_eat.addEventListener('mouseout', function() {
-            price.textContent = '';
-        });
-    });
-</script>
+<script src="{% static 'js/some_page.js' %}"></script>
 {% endblock %}

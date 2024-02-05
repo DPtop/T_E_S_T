@@ -11,7 +11,7 @@
     <header role="banner">
         <nav>
             <ul class="menu">
-                <li><a>Menu1</a>
+                <li><a>Меню1</a>
 
                     <ul class="menu-2">
                         <li><a href="#">some...</a>
@@ -70,7 +70,7 @@
                 </li>
 
 
-                <li><a>Menu2</a>
+                <li><a>Меню2</a>
                     <ul class="menu-2">
                         <li><a href="#">2-1</a>
 
@@ -127,13 +127,13 @@
                     </ul>
                 </li>
 
-                <li class="disabled_feedback" id="feedback"><a href="../feedback">Feedback</a></li>
+                <li class="disabled_feedback" id="feedback"><a href="../feedback">Отзывы</a></li>
 
-                <li onclick="light_dark();"><a id="lightDark">Light</a></li>
+                <li onclick="light_dark();"><a id="lightDark">Темнее</a></li>
 
-                <li style="float:right;"><a href="../first">Home</a></li>
+                <li style="float:right;"><a id="home" href="../first">&#127761;</a></li>
 
-                <li style="float:right;" onclick="FuncLogOUT();"><a id="hrefLogin" href="#"><p id="logInOut">Login</p></a></li>
+                <li style="float:right;" onclick="FuncLogOUT();"><a id="hrefLogin" href="#"><p id="logInOut">Войти</p></a></li>
 
             </ul>
         </nav>
@@ -141,8 +141,10 @@
 
     {% block  content %} {% endblock %}
 
-    <footer role="contentinfo">F O O T E R
-        {% block  content2 %} {% endblock %}
+    <footer role="contentinfo">
+        <p>Телефон:<br>
+            +0(123)45-67-89<br>
+            НЕ звонить! с 18:00 до 9:00</p>
     </footer>
 
 
@@ -168,7 +170,7 @@
                 document.querySelector(".textarea").style.pointerEvents = 'auto';
                 document.querySelector(".textarea").style.opacity = 1;
             } catch {  }
-            elementChange.textContent = 'Logout';
+            elementChange.textContent = 'Выйти';
             link.setAttribute('href', '#');
         }
         else {
@@ -181,7 +183,7 @@
 
         // очистка куки при Logout
         function FuncLogOUT() {
-            if (elementChange.textContent === 'Logout'){
+            if (elementChange.textContent === 'Выйти'){
                 document.cookie.split(";").forEach(function(cookie) {
                    let name = cookie.split("=")[0].trim();
                    if (name == 'IsUserLogin'){
@@ -203,7 +205,11 @@
         let button_LD = document.getElementById('lightDark');
         let elem_feedback = document.querySelector('.feedback');
         let elem_div_feedback = document.querySelector('.div_feedback');
+        let elem_modal = document.querySelector('.modal');
+        let elem_close = document.querySelector('span');
+        let home = document.querySelector('#home');
         let elements = document.querySelectorAll('*');
+
 
         // Функция по смене Light/Dark
         function LigDar(){
@@ -219,13 +225,25 @@
                     element.style.color = '#8a6c04';
                 });
             });
-            // Проверяем можно ли, если есть...
+            // Проверяем можно ли, если есть... для:
+            // feedback
             try{
                 elem_feedback.style.borderColor = '#000';
                 elem_div_feedback.style.borderColor = '#000';
+                // <hr>
+                let elem_hr = document.querySelectorAll('hr');
+                elem_hr.forEach(hr => {
+                    hr.style.borderColor = '#000';
+                });
+            } catch {  }
+            // some_page -> modal
+            try{
+                elem_modal.style.backgroundColor = 'rgba(46, 46, 46, 0)';
+                elem_close.style.backgroundColor = 'rgba(46, 46, 46, 0)';
             } catch {  }
             // Меняем название с Light на Dark
-            button_LD.textContent = 'Dark';
+            button_LD.textContent = 'Ярче';
+            home.innerHTML = '&#127765;';
         }
 
         // Для куки
@@ -246,7 +264,7 @@
         // По нажатию на Light/Dark
         function light_dark(){
             // Изменяем цвет фона для каждого элемента
-            if (button_LD.textContent == 'Light'){
+            if (button_LD.textContent == 'Темнее'){
                 LigDar();
                 // Сохраняем в куки значение button_LD.textContent в формате 0/1
                 document.cookie = "Light=0" + ";path=/";
