@@ -9,7 +9,6 @@ table{
 
 table, tr, td, th{
   text-align: center;
-  border: 1px solid black;
   border-collapse: collapse;
   position: relative;
 }
@@ -124,4 +123,22 @@ tr:hover:nth-child(5) td:hover:nth-child(4)::after{
     float: right;
     font-size: 28px;
     font-weight: bold;
+}
+
+#listSelected{
+    width: 50px;
+}
+
+#buttonPlus{
+    margin-right: 100px;
+}
+
+.modal-datalist {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dishCancel{
+    font-size: 36px;
+    margin-right: auto;
 }

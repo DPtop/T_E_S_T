@@ -6,6 +6,7 @@ let btnModal = document.getElementById('buttonModal');
 let totalPrice = 0;
 let totalDishes = 0;
 let listDishes = {};
+let zero_dish = 0;
 
 eatMenu.forEach( m_eat => {
     m_eat.addEventListener('mouseover', function() {
@@ -22,6 +23,9 @@ eatMenu.forEach( m_eat => {
                 dishes.textContent = totalDishes;
                 // составление списка блюд (с возможностью подсчёта каждого)
                 if (listDishes[m_eat.getAttribute('tagText')]){
+                    if (listDishes[m_eat.getAttribute('tagText')].length == 100500) {
+                        listDishes[m_eat.getAttribute('tagText')].length = 0;
+                    }
                     listDishes[m_eat.getAttribute('tagText')].push(m_eat.getAttribute('tagPrice'));
                 }
                 else{
@@ -53,22 +57,37 @@ function closeModal() {
 function openModal() {
     let show = document.querySelector('#showDishes');
     let i = 1;
-    let selected = '';
+    let selected_list = '';
     let totalPrice = 0;
     let lastNumber = 0;
     document.getElementById('myModal').style.display = "block";
+    let data_list = document.querySelector('#rangeList');
+    let option_list = [];
 
     for (let key in listDishes) {
-        selected += i +'.\t"'
-                      + key
-                      + '" \n\t\t\tпо цене за порцию: ' + listDishes[key][0]
-                      + ', \tв количестве порций: ' + listDishes[key].length
-                      + '.\tОбщая стоимость: ' + listDishes[key][0] * listDishes[key].length
-                      + '\n'
-                      + '--hr--';
+        let zero_price = 0;
+        // если 0:
+        if (listDishes[key].length == 100500) {
+            zero_dish = 0;
+            zero_price = 0;
+        } else {
+            zero_dish = listDishes[key].length;
+            zero_price = listDishes[key][0] * listDishes[key].length;
+          }
+        // составляем список заказа
+        selected_list += i +'.\t"'
+                           + key
+                           + '" \n\t\t\tпо цене за порцию: ' + listDishes[key][0]
+                           + ', \tв количестве порций: ' + zero_dish    //listDishes[key].length
+                           + '.\tОбщая стоимость: ' + zero_price    //listDishes[key][0] * listDishes[key].length
+                           + '\n'
+                           + '--hr--';
+
+        option_list.push(i);
         i += 1;
-        totalPrice += listDishes[key][0] * listDishes[key].length;
-        show.innerHTML = selected.replace(/\n/g, '<br>')
+
+        totalPrice += listDishes[key][0] * zero_dish    // * listDishes[key].length;
+        show.innerHTML = selected_list.replace(/\n/g, '<br>')
 
         // делаем <hr> линии
         show.innerHTML = show.innerHTML.replace(/--hr--/g, '<hr>');
@@ -90,16 +109,77 @@ function openModal() {
         }
     }
 
+    // создаём option для input для каждого выбранного блюда
+    try{
+        while (data_list.firstChild) {
+            data_list.removeChild(data_list.firstChild);
+        }
+    }catch{}
+    option_list.forEach(optn_lst => {
+        let new_option = document.createElement('option');
+        new_option.value = optn_lst;
+        data_list.appendChild(new_option);
+    });
+
     // слогаем слово "копейка"
-    singNumber = Math.round(totalPrice) % 10;
-    tensNumber = Math.round(totalPrice) % 100;
-    if (singNumber == 1 && [0, 2, 3, 4, 5, 6, 7, 8, 9].includes(tensNumber)){
-        show.innerHTML += '\nИтого: ' + Math.round(totalPrice) + ' копейка';
+    if (totalPrice > 0){
+        singNumber = Math.round(totalPrice) % 10;
+        tensNumber = parseInt((Math.round(totalPrice) % 100 - singNumber) / 10);
+        if (singNumber == 1 && [0, 2, 3, 4, 5, 6, 7, 8, 9].includes(tensNumber)){
+            show.innerHTML += '\nИтого: ' + Math.round(totalPrice) + ' копейка';
+        }
+        else if ([2, 3, 4].includes(singNumber) && [0, 2, 3, 4, 5, 6, 7, 8, 9].includes(tensNumber)){
+            show.innerHTML += '\nИтого: ' + Math.round(totalPrice) + ' копейки';
+        }
+        else{
+            show.innerHTML += '\nИтого: ' + Math.round(totalPrice) + ' копеек';
+        }
     }
-    else if ([2, 3, 4].includes(singNumber) && [0, 2, 3, 4, 5, 6, 7, 8, 9].includes(tensNumber)){
-        show.innerHTML += '\nИтого: ' + Math.round(totalPrice) + ' копейки';
+    else {
+        show.innerHTML += '\nИтого: ' + 'не выбрано';
     }
-    else{
-        show.innerHTML += '\nИтого: ' + Math.round(totalPrice) + ' копеек';
+}
+
+let input_selected = document.getElementById('listSelected');
+// убираем порцию
+function dishMinus() {
+    // узнаём что в input: input_selected.value
+    let j = 1;
+    for (let key in listDishes) {
+        let key_length = listDishes[key].length;
+        if (j == input_selected.value) {
+            key_length -= 1;
+            if (key_length == 100499 || key_length == 0){
+                listDishes[key].length = 100500;
+            }
+            else {
+                listDishes[key].length = key_length;
+            }
+            openModal();
+        }
+        j += 1;
     }
+}
+
+// добавляем порцию
+function dishPlus() {
+    // узнаём что в input: input_selected.value
+    let j = 1;
+    for (let key in listDishes) {
+        if (j == input_selected.value) {
+            if (listDishes[key].length == 100500) {
+                listDishes[key].length = 1;
+            }
+            else {
+                listDishes[key].length += 1;
+            }
+            openModal();
+        }
+        j += 1;
+    }
+}
+
+// отмена
+function dishCancel() {
+    location.reload();
 }

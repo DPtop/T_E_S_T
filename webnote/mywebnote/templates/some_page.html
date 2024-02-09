@@ -59,7 +59,15 @@
     <button id="buttonModal" onclick="openModal()">Подробнее о заказе</button>
     <div id="myModal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeModal()">&#10007;</span>
+            <div class="modal-datalist">
+                <span class="dishCancel" onclick="dishCancel()">&#8709;</span>
+                <button id="buttonMinus" onclick="dishMinus()">&#8826;</button>
+                <input list="rangeList" id="listSelected">
+                  <datalist id="rangeList">
+                  </datalist>
+                <button id="buttonPlus" onclick="dishPlus()">&#8827;</button>
+                <span class="close" onclick="closeModal()">&#10007;</span>
+            </div>
             <p id="showDishes"></p>
         </div>
     </div>
