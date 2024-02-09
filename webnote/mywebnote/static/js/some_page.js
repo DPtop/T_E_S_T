@@ -20,7 +20,6 @@ eatMenu.forEach( m_eat => {
                 // количество блюд
                 totalDishes += 1;
                 dishes.textContent = totalDishes;
-                //
                 // составление списка блюд (с возможностью подсчёта каждого)
                 if (listDishes[m_eat.getAttribute('tagText')]){
                     listDishes[m_eat.getAttribute('tagText')].push(m_eat.getAttribute('tagPrice'));
@@ -37,7 +36,7 @@ eatMenu.forEach( m_eat => {
     });
 });
 
-// активность всплывающего окна
+// активация всплывающего окна
 if (totalPrice == 0){
     btnModal.setAttribute('disabled', 'disabled'); // Делаем кнопку неактивной
 }
@@ -58,6 +57,7 @@ function openModal() {
     let totalPrice = 0;
     let lastNumber = 0;
     document.getElementById('myModal').style.display = "block";
+
     for (let key in listDishes) {
         selected += i +'.\t"'
                       + key
@@ -72,7 +72,7 @@ function openModal() {
 
         // делаем <hr> линии
         show.innerHTML = show.innerHTML.replace(/--hr--/g, '<hr>');
-        show.innerHTML;
+        show.innerHTML; // готовый список
 
         // смена цвета для <hr> при Dark стиле
         let split_Light = document.cookie.split('; ');
@@ -91,11 +91,12 @@ function openModal() {
     }
 
     // слогаем слово "копейка"
-    lastNumber = Math.round(totalPrice) % 10;
-    if (lastNumber == 1){
+    singNumber = Math.round(totalPrice) % 10;
+    tensNumber = Math.round(totalPrice) % 100;
+    if (singNumber == 1 && [0, 2, 3, 4, 5, 6, 7, 8, 9].includes(tensNumber)){
         show.innerHTML += '\nИтого: ' + Math.round(totalPrice) + ' копейка';
     }
-    else if ([2, 3, 4].includes(lastNumber)){
+    else if ([2, 3, 4].includes(singNumber) && [0, 2, 3, 4, 5, 6, 7, 8, 9].includes(tensNumber)){
         show.innerHTML += '\nИтого: ' + Math.round(totalPrice) + ' копейки';
     }
     else{

@@ -99,7 +99,7 @@ tr:hover:nth-child(5) td:hover:nth-child(4)::after{
     left: 0;
     top: 0;
     width: 100%;
-    height: 100%;
+    /*height: 100%;*/
     font-size: 18px;
 }
 
@@ -116,6 +116,8 @@ tr:hover:nth-child(5) td:hover:nth-child(4)::after{
     width: auto;
     text-align: left;
     white-space: pre; /* сохранение пробельных символов, включая табуляцию */
+    max-height: 500px;
+    overflow: auto; /* добавляет полосы прокрутки при необходимости */
 }
 
 .close {
