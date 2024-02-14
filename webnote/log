@@ -1,0 +1,4 @@
+2024-02-10 14:51:27 -- ERROR -- "GET /mywebnote/CheckUser/?NickName=nIck.end1?Password=pA55.end2 HTTP/1.1" 500 68344
+2024-02-10 14:51:27 -- INFO -- "GET /mywebnote/login/?NickName=*&Password=* HTTP/1.1" 200 14372
+2024-02-14 12:48:41 -- ERROR -- "GET /mywebnote/CheckUser/?NickName=nIck.end1?Password=pA55.end2 HTTP/1.1" 500 68649
+2024-02-14 12:48:41 -- INFO -- "GET /mywebnote/login/?NickName=*&Password=* HTTP/1.1" 200 14372

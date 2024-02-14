@@ -25,7 +25,7 @@
             if (input.textLength > 0){
                 input.value = input.value.replace(/\n/g, '<br>    ');
                 input.value = encodeURIComponent(input.value);  // не будет обрезать текст на символе '#'
-                xhr.open('GET', '../my_feedback/'
+                xhr.open('GET', '../feed_back/'
                                 + '?feedtext='
                                 + inputNickName
                                 + ':<br>    '
@@ -38,6 +38,7 @@
     </script>
 
     <script type="text/javascript">
+        /* создание <hr> */
         let HR = document.getElementById('fileContent');
         HR.innerHTML = HR.innerHTML.replace(/--hr--/g, '<hr>');
         HR.innerHTML;
