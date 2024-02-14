@@ -7,6 +7,8 @@ let totalPrice = 0;
 let totalDishes = 0;
 let listDishes = {};
 let zero_dish = 0;
+let show = document.querySelector('#showDishes');
+let sumDish = ''
 
 eatMenu.forEach( m_eat => {
     m_eat.addEventListener('mouseover', function() {
@@ -55,7 +57,6 @@ function closeModal() {
     document.getElementById('myModal').style.display = "none";
 }
 function openModal() {
-    let show = document.querySelector('#showDishes');
     let i = 1;
     let selected_list = '';
     let totalPrice = 0;
@@ -84,6 +85,7 @@ function openModal() {
                            + '--hr--';
 
         option_list.push(i);
+        sumDish += key + '..' + zero_dish + ', '
         i += 1;
 
         totalPrice += listDishes[key][0] * zero_dish    // * listDishes[key].length;
@@ -108,6 +110,7 @@ function openModal() {
             });
         }
     }
+    sumDish += '-->'
 
     // создаём option для input для каждого выбранного блюда
     try{
@@ -182,4 +185,12 @@ function dishPlus() {
 // отмена
 function dishCancel() {
     location.reload();
+}
+
+// "отправка" заказа
+function dishOrder() {
+    sumDish = sumDish.split('-->');
+    sumDish = sumDish[sumDish.length-2];
+    sessionStorage.setItem('sumDish', sumDish);
+    dishCancel();
 }

@@ -45,4 +45,7 @@ def feedback(request):
         return render(request, "feedback.html", row_dict)  #http://127.0.0.1:8000/mywebnote/feedback/
 
 def some_page(request):
-    return render(request, "some_page.html")  #http://127.0.0.1:8000/mywebnote/some_page/
+    return render(request, "some_page.html")  #http://127.0.0.1:8000/mywebnote/some_page
+
+def dish_order(request):
+    return render(request, "dish_order.html")  #http://127.0.0.1:8000/mywebnote/dish_order/

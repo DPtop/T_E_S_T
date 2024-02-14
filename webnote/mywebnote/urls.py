@@ -13,4 +13,5 @@ urlpatterns = [
     path('CheckUser/', CheckUser, name='CheckUser'),    # JSON login.html
     path('some_page/', mynote.some_page),
     path('AddUser/', AddUser, name='AddUser'),
+    path('dish_order/', mynote.dish_order),
 ]

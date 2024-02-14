@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block  content %}
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/dish_order.css' %}">
+</head>
+
+<body>
+    <button id="buttonSumOrder" onclick="sumOrder();">Что заказано:</button>
+</body>
+
+<script src="{% static 'js/dish_order.js' %}"></script>
+{% endblock %}

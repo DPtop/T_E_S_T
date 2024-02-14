@@ -1,0 +1,16 @@
+#buttonSumOrder {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 28px;
+}
+
+img {
+    display: inline-block;
+    width: 90px;
+    height: 90px;
+}
+
+p {
+    display: inline-block;
+    color: #f90;
+}
