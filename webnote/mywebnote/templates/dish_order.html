@@ -7,8 +7,11 @@
 </head>
 
 <body>
-    <button id="buttonSumOrder" onclick="sumOrder();">Что заказано:</button>
-    <div id="myDIV"></div>
+    <div>
+        <button id="buttonSumOrder" onclick="sumOrder();">Что заказано:</button>
+        <div id="orderDIV"></div>
+        <button id="buttonClearOrder" onclick="dishClear();">Очистить!</button>
+    </div>
 </body>
 
 <script src="{% static 'js/dish_order.js' %}"></script>

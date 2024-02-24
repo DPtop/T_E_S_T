@@ -49,3 +49,6 @@ def some_page(request):
 
 def dish_order(request):
     return render(request, "dish_order.html")  #http://127.0.0.1:8000/mywebnote/dish_order/
+
+def recover(request):
+    return render(request, "recover.html")  #http://127.0.0.1:8000/mywebnote/recover/

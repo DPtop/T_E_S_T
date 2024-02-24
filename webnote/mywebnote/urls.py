@@ -3,6 +3,7 @@ import mywebnote.views as mynote
 from mywebnote.pymain import feed_back
 from mywebnote.check_user import CheckUser
 from mywebnote.add_user import AddUser
+from mywebnote.recover_user import RecoverUser
 
 urlpatterns = [
     path('login/', mynote.login),
@@ -14,4 +15,6 @@ urlpatterns = [
     path('some_page/', mynote.some_page),
     path('AddUser/', AddUser, name='AddUser'),
     path('dish_order/', mynote.dish_order),
+    path('recover/', mynote.recover),
+    path('RecoverUser/', RecoverUser, name='RecoverUser'),
 ]

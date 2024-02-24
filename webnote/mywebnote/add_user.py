@@ -13,7 +13,7 @@ def AddUser(request):
 
     will_registered = str(request)
     will_registered = unquote(will_registered, 'utf-8')
-    print('will_registered:', will_registered)
+
     # вычленяем ник и пароль
     i, nname_begin, nname_end, pword_begin, pword_end, email_begin, email_end = 0, 0, 0, 0, 0, 0, 0
     while i < len(will_registered):
@@ -40,7 +40,6 @@ def AddUser(request):
         else:
             i += 1
 
-    print('nick_name, pass_word, e_mail ::', nick_name, pass_word, e_mail)
     # добавить в таблицу sql
     with sqlite3.connect("db.sqlite3") as db:
         cur = db.cursor()

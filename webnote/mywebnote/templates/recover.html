@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block  content %}
+<main role="main">
+    <link rel="stylesheet" href="{% static 'css/reg_log.css' %}">
+    <form id="form" autocomplete="off">
+        <fieldset class="form">
+            <b>ВОССТАНОВЛЕНИЕ ПАРОЛЯ</b><hr>
+            <input class="enterfield" id="nname" type="text" name="NickName" placeholder="ПРОЗВИЩЕ"/>
+                <br>
+            <input class="enterfield" type="text" name="Email" placeholder="EMAIL"/>
+                <br>
+            <input class="logIn" id="sent_data" type="submit" value=">>   Восстановить   <<">
+            <p id="recoverP"> * Пароль будет отправлен Вам на почту!</p>
+        </fieldset>
+    </form>
+</main>
+
+<script type="text/javascript">
+    form.addEventListener("submit", function(){
+        // передача ника и эмейла из браузера
+        let input = document.getElementsByClassName('enterfield');
+        let req = new XMLHttpRequest();
+        req.open('GET', '../RecoverUser/' +
+                        '?NickName=' + input.NickName.value + '.end1' +
+                        '?Email=' + input.Email.value + '.end2', false);
+        req.send();    // to RecoverUser()
+        // сокрытие NickName и Email в пути браузера
+        input.NickName.value = '*';
+        input.Email.value = '*';
+    });
+</script>
+{% endblock %}

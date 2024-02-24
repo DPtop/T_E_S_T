@@ -45,6 +45,7 @@ eatMenu.forEach( m_eat => {
 // активация всплывающего окна
 if (totalPrice == 0){
     btnModal.setAttribute('disabled', 'disabled'); // Делаем кнопку неактивной
+    btnModal.setAttribute('pointer-events', 'none'); // Делаем кнопку затемнённой
 }
 addEventListener('mousemove' || 'keydown', function() {
     if (totalPrice > 0){
