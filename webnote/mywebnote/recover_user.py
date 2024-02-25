@@ -1,6 +1,8 @@
 import sqlite3
 from urllib.parse import unquote
-from django.core.mail import send_mail
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 
 nick_name = str('')
@@ -38,12 +40,25 @@ def RecoverUser(request):
         result = cur.execute("SELECT username, email, password FROM auth_user;")
         for row in result.fetchall():
             if row[0] == nick_name and row[1] == e_mail:
-                print('row:1:', row[1], row[2])
-                # send_mail(
-                #     'Password Recovering',
-                #     f'{row[2]}',
-                #     'example@mail',   # ot
-                #     [f'{row[1]}'],    # to
-                #     fail_silently=False,
-                # )
-                # print('row:2:', row[1], row[2])
+                # Настройки SMTP сервера
+                smtp_server = 'smtp.mail.ru'
+                smtp_port = 587
+                smtp_username = 'dimdim.ua@mail.ru'
+                smtp_password = '7VwtkNFFJ1pU3Yerd2xH'
+                # Создание сообщения
+                sender_email = 'dimdim.ua@mail.ru'
+                receiver_email = row[1]
+                subject = 'Password Recovering'
+                body = row[2]
+                #
+                message = MIMEMultipart()
+                message['From'] = sender_email
+                message['To'] = receiver_email
+                message['Subject'] = subject
+                message.attach(MIMEText(body, 'plain'))
+                # Отправка письма
+                with smtplib.SMTP(smtp_server, smtp_port) as server:
+                    server.starttls()
+                    server.login(smtp_username, smtp_password)
+                    text = message.as_string()
+                    server.sendmail(sender_email, receiver_email, text)
