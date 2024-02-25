@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block  content %}
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'css/back_scroll.css' %}">
+        <title>Back Scroll</title>
+    </head>
+
+    <body>
+
+        <div class="container-0">
+            <img class="img-background-0" src="{% static 'image/img_scroll/img0.jpg' %}">
+            <div class="container-1">
+                <img class="img-background-1" src="{% static 'image/img_scroll/img1.jpg' %}">
+                <div class="image-text_1">
+                    Теперь я выше туч и выше всех проблем,
+                    <br>Поднялся выше круч и наслаждаюсь всем.
+                </div>
+            </div>
+            <div class="container-1">
+                <img class="img-background-1" src="{% static 'image/img_scroll/img2.jpg' %}">
+                <div class="image-text_2">
+                    Чай на рассвете
+                    <br>И на закате солнца.
+                    <br>Восхождение.
+                </div>
+            </div>
+        </div>
+
+    </body>
+{% endblock %}

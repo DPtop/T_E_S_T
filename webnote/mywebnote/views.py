@@ -52,3 +52,9 @@ def dish_order(request):
 
 def recover(request):
     return render(request, "recover.html")  #http://127.0.0.1:8000/mywebnote/recover/
+
+def back_scroll(request):
+    return render(request, "back_scroll.html")  #http://127.0.0.1:8000/mywebnote/back_scroll/
+
+def back_static(request):
+    return render(request, "back_static.html")  #http://127.0.0.1:8000/mywebnote/back_static/

@@ -17,4 +17,6 @@ urlpatterns = [
     path('dish_order/', mynote.dish_order),
     path('recover/', mynote.recover),
     path('RecoverUser/', RecoverUser, name='RecoverUser'),
+    path('back_scroll/', mynote.back_scroll),
+    path('back_static/', mynote.back_static),
 ]

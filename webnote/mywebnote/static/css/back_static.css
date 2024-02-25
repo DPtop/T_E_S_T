@@ -1,0 +1,16 @@
+body {
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.img-background {
+    width: 100vw;
+    height: 96vh;
+    background-attachment: fixed;
+}
+
+footer {
+    font-size: 0;
+}
