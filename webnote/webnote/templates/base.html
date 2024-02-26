@@ -11,7 +11,7 @@
     <header role="banner">
         <nav>
             <ul class="menu">
-                <li><a>Меню1</a>
+                <li><a>Меню</a>
 
                     <ul class="menu-2">
                         <li><a href="#">страница...</a>
@@ -24,10 +24,10 @@
                                         <li><a href="#">1-1-1-3</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">...и...</a>
+                                <li><a href="#">...и вот...</a>
                                     <ul>
-                                        <li><a href="../back_scroll">...тут</a></li>
-                                        <li><a href="../back_static">...и тут</a></li>
+                                        <li><a href="../back_scroll">...здесь</a></li>
+                                        <li><a href="../back_static">...ну и тут</a></li>
                                         <li><a href="#">1-1-2-3</a></li>
                                     </ul>
                                 </li>
@@ -154,6 +154,14 @@
         let elem_modal = document.querySelector('.modal');
         let elem_close = document.querySelector('span');
         let home = document.querySelector('#home');
+        let imgTxt1 = document.querySelector('.image-text_1');
+        let imgTxt2 = document.querySelector('.image-text_2');
+        let imgTxt = document.querySelector('.image-text');
+        let imgTxt_i = document.querySelector('i');
+        let imgTxt_b = document.querySelector('b');
+        let imgTxt_small = document.querySelector('small');
+        let imgTxt_backImg = document.querySelector('.img-background');
+        let imgTxt_hr = document.querySelector('hr');
         let elements = document.querySelectorAll('*');
 
 
@@ -186,6 +194,20 @@
             try{
                 elem_modal.style.backgroundColor = 'rgba(46, 46, 46, 0)';
                 elem_close.style.backgroundColor = 'rgba(46, 46, 46, 0)';
+            } catch {  }
+            // back_scroll
+            try{
+                imgTxt1.style.backgroundColor = 'rgba(46, 46, 46, 0)';
+                imgTxt2.style.backgroundColor = 'rgba(46, 46, 46, 0)';
+            } catch {  }
+            // back_static
+            try{
+                imgTxt.style.backgroundColor = 'rgba(46, 46, 46, 0)';
+                imgTxt_i.style.backgroundColor = 'rgba(46, 46, 46, 0)';
+                imgTxt_b.style.backgroundColor = 'rgba(46, 46, 46, 0)';
+                imgTxt_small.style.backgroundColor = 'rgba(46, 46, 46, 0)';
+                imgTxt_backImg.style.filter = 'brightness(40%)';
+                imgTxt_hr.style.borderColor = 'black';
             } catch {  }
             // Меняем название с Light на Dark
             button_LD.textContent = 'Ярче';

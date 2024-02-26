@@ -1,8 +1,8 @@
-header {
+header{
     position: fixed;
     width: 100%;
     margin-top: -2px;
-    z-index: 2;
+    z-index: 3;
 }
 
 .container-0 {

@@ -106,3 +106,6 @@
 2024-02-25 23:20:10 -- INFO -- "GET /mywebnote/recover/?NickName=*&Email=* HTTP/1.1" 200 10901
 2024-02-25 23:20:18 -- ERROR -- "GET /mywebnote/RecoverUser/?NickName=Ia.end1?Email=xo4y8ce@gmail.com.end2 HTTP/1.1" 500 69982
 2024-02-25 23:20:18 -- INFO -- "GET /mywebnote/recover/?NickName=*&Email=* HTTP/1.1" 200 10901
+2024-02-25 23:22:38 -- INFO -- "GET /mywebnote/recover/?NickName=*&Email=* HTTP/1.1" 200 10901
+2024-02-25 23:22:47 -- ERROR -- "GET /mywebnote/RecoverUser/?NickName=Ia.end1?Email=xo4y8ce@gmail.com.end2 HTTP/1.1" 500 69962
+2024-02-25 23:22:47 -- INFO -- "GET /mywebnote/recover/?NickName=*&Email=* HTTP/1.1" 200 10901
