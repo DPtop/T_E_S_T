@@ -1,0 +1,27 @@
+#buttonSumOrder {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 19px;
+}
+
+img {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+}
+
+p {
+    display: inline-block;
+    color: #f90;
+}
+
+#buttonClearOrder {
+    visibility: hidden;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 13px;
+}
+
+footer {
+    visibility: hidden;
+}

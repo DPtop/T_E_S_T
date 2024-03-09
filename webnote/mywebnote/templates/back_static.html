@@ -3,7 +3,7 @@
 {% block  content %}
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="{% static 'css/back_static.css' %}">
+        <link class="style_scale" rel="stylesheet"> <!--href="{% static 'css/back_static.css' %}">-->
         <title>Back Static</title>
     </head>
 
@@ -75,4 +75,26 @@
         </div>
 
     </body>
+
+<script>
+    window.addEventListener("resize", AutoScale); //Масштабируем страницу при растягивании окна
+    AutoScale(); //Масштабируем страницу после загрузки
+
+    function AutoScale()
+    {
+        let width = window.innerWidth; //Ширина окна
+        //Если вы хотите проверять по размеру экрана, то вам нужно свойство window.screen.width
+
+        let scale = document.querySelector('.style_scale');
+
+        if(width > 1200)
+        {
+            scale.setAttribute("href", "/static/css/back_static.css");
+        }
+        else if(width <= 1200)
+        {
+            scale.setAttribute("href", "/static/css/back_static_small.css");
+        }
+    }
+</script>
 {% endblock %}

@@ -1,0 +1,72 @@
+.form{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    background-color: #4169E1;
+    text-align: center;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 5vh;
+    color: white;
+    width: 40vw;
+    height: 30vh;
+}
+
+b{
+    font-size: 43px;
+}
+
+hr{
+    font-size: 16px;
+    border-color: rgb(112, 112, 112);
+}
+
+.fontA{
+    font-size: 19px;
+}
+
+.enterfield{
+    width: 37vw;
+    height: 5vh;
+    border-radius: 3px;
+    font-size: 24px;
+    text-indent: 3%;
+}
+
+.logIn{
+    width: 27vw;
+    height: 5vh;
+    border-radius: 3px;
+    font-size: 24px;
+    text-indent: 3%;
+    background-color: #0000CD;
+    color: #FFFFFF;
+    border: hidden;
+}
+
+.regLog{
+    width: 27vw;
+    height: 5vh;
+    border-radius: 3px;
+    font-size: 24px;
+    text-indent: 3%;
+    background-color: #4169E1;
+    color: #0000CD;
+    border: hidden;
+}
+
+.regLog:hover{
+    background-color: #0000CD;
+    color: #4169E1;
+}
+
+#recoverP{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+    font-size: 11px;
+    width: 27vw;
+    line-height: 1vh;
+}

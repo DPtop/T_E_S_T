@@ -2,7 +2,7 @@
 {% load static %}
 {% block  content %}
 <main role="main">
-    <link rel="stylesheet" href="{% static 'css/reg_log.css' %}">
+    <link class="style_scale" rel="stylesheet"> <!--href="{% static 'css/reg_log.css' %}">-->
     <form id="form" autocomplete="off">
         <fieldset class="form">
             <b><input class="regLog" type="submit" value=">>    РЕГИСТРАЦИЯ    <<"></b>
@@ -51,5 +51,26 @@
             input.RepPassword.placeholder = 'do NOT match!';
         }
     });
+</script>
+<script>
+    window.addEventListener("resize", AutoScale); //Масштабируем страницу при растягивании окна
+    AutoScale(); //Масштабируем страницу после загрузки
+
+    function AutoScale()
+    {
+        let width = window.innerWidth; //Ширина окна
+        //Если вы хотите проверять по размеру экрана, то вам нужно свойство window.screen.width
+
+        let scale = document.querySelector('.style_scale');
+
+        if(width > 1200)
+        {
+            scale.setAttribute("href", "/static/css/reg_log.css");
+        }
+        else if(width <= 1200)
+        {
+            scale.setAttribute("href", "/static/css/reg_log_small.css");
+        }
+    }
 </script>
 {% endblock %}

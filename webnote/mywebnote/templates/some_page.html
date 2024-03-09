@@ -3,7 +3,7 @@
 {% block  content %}
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{% static 'css/some_page.css' %}">
+    <link class="style_scale" rel="stylesheet"> <!--href="{% static 'css/some_page.css' %}">-->
 </head>
 
 <main role="main">
@@ -76,4 +76,29 @@
 
 
 <script src="{% static 'js/some_page.js' %}"></script>
+<script>
+    window.addEventListener("resize", AutoScale); //Масштабируем страницу при растягивании окна
+    AutoScale(); //Масштабируем страницу после загрузки
+
+    function AutoScale()
+    {
+        let width = window.innerWidth; //Ширина окна
+        //Если вы хотите проверять по размеру экрана, то вам нужно свойство window.screen.width
+
+        let scale = document.querySelector('.style_scale');
+
+        if(width > 1200)
+        {
+            scale.setAttribute("href", "/static/css/some_page.css");
+        }
+        else if(width <= 1200 && width > 720)
+        {
+            scale.setAttribute("href", "/static/css/some_page_small.css");
+        }
+        else if(width < 720)
+        {
+            scale.setAttribute("href", "/static/css/some_page_smaller.css");
+        }
+    }
+</script>
 {% endblock %}

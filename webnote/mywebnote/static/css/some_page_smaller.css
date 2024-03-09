@@ -1,10 +1,12 @@
+/* размер/2 */
+
 table{
   overflow: hidden;
   margin: 0 auto;
-  margin-top: 5vw;
-  width: 60%;
-  height: 60%;
-  font-size: 36px;
+  margin-top: 3vw;
+  width: 30%;
+  height: 30%;
+  font-size: 18px;
 }
 
 table, tr, td, th{
@@ -14,8 +16,8 @@ table, tr, td, th{
 }
 
 img{
-  width: 180px;
-  border-radius: 15%;
+  width: 90px;
+  border-radius: 8%;
   vertical-align: top;
 }
 
@@ -26,15 +28,15 @@ td:hover{
 
 /* //Column */
 tr:hover:nth-child(2) td:hover:nth-child(n)::after,
-tr:hover:nth-child(1) th:hover:nth-child(n)::after{ 
+tr:hover:nth-child(1) th:hover:nth-child(n)::after{
   background-color: #fa0;
   content: '';
-  height: 10000px;    
+  height: 5000px;
   left: 0;
-  position: absolute;  
+  position: absolute;
   top: 0px;
-  width: 100%;
-  z-index: -1;        
+  width: 50%;
+  z-index: -1;
 }
 
 tr:hover:nth-child(1) td:hover:nth-child(1)::after,
@@ -60,8 +62,8 @@ tr:hover:nth-child(5) td:hover:nth-child(4)::after{
     background: #2e2e2e; /* Цвет фона */
     color: #f90; /* Цвет текста */
     font-family: Arial, sans-serif; /* Гарнитура шрифта */
-    font-size: 14px; /* Размер текста подсказки */
-    padding: 5px 10px; /* Поля */
+    font-size: 7px; /* Размер текста подсказки */
+    padding: 3px 5px; /* Поля */
     border: 1px solid #333; /* Параметры рамки */
 }
 
@@ -69,18 +71,18 @@ tr:hover:nth-child(5) td:hover:nth-child(4)::after{
 /* лейбы price, total, dishes */
 .price {
     position: absolute;
-    margin-left: 25vw;
-    font-size: 24px;
+    margin-left: 13vw;
+    font-size: 12px;
 }
 .total {
     position: absolute;
-    margin-left: 55vw;
-    font-size: 24px;
+    margin-left: 50vw;
+    font-size: 12px;
 }
 .dishes {
     position: absolute;
     margin-left: 70vw;
-    font-size: 24px;
+    font-size: 12px;
 }
 
 
@@ -88,7 +90,7 @@ tr:hover:nth-child(5) td:hover:nth-child(4)::after{
 #buttonModal{
     margin: 0 auto;
     display: block;
-    font-size: 18px;
+    font-size: 9px;
 }
 
 /* всплывающее окно */
@@ -99,12 +101,12 @@ tr:hover:nth-child(5) td:hover:nth-child(4)::after{
     top: 0;
     width: 100%;
     /*height: 100%;*/
-    font-size: 18px;
+    font-size: 9px;
 }
 
 .modal-content {
-    margin: 10% auto;
-    padding: 0 20px 20px 20px;
+    margin: 5% auto;
+    padding: 0 10px 10px 10px;
     border: 1px solid #888;
     width: 60%;
     white-space: pre-line;
@@ -115,22 +117,22 @@ tr:hover:nth-child(5) td:hover:nth-child(4)::after{
     width: auto;
     text-align: left;
     white-space: pre; /* сохранение пробельных символов, включая табуляцию */
-    max-height: 500px;
+    max-height: 250px;
     overflow: auto; /* добавляет полосы прокрутки при необходимости */
 }
 
 .close {
     float: right;
-    font-size: 28px;
+    font-size: 14px;
     font-weight: bold;
 }
 
 #listSelected {
-    width: 50px;
+    width: 25px;
 }
 
 #buttonPlus {
-    margin-right: 100px;
+    margin-right: 50px;
 }
 
 .modal-datalist {
@@ -139,13 +141,13 @@ tr:hover:nth-child(5) td:hover:nth-child(4)::after{
 }
 
 .dishCancel {
-    font-size: 36px;
+    font-size: 18px;
     margin-right: auto;
 }
 
 #buttonOrder {
-    font-size: 24px;
+    font-size: 12px;
     position: relative;
-    left: 40%;
+    left: 20%;
     width: 20%;
 }
