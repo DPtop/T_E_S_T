@@ -43,10 +43,10 @@ def RecoverUser(request):
                 # Настройки SMTP сервера
                 smtp_server = 'smtp.mail.ru'
                 smtp_port = 587
-                smtp_username = 'dimdim.ua@mail.ru'
-                smtp_password = '7VwtkNFFJ1pU3Yerd2xH'
+                smtp_username = 'dyomdiftest@mail.ru'
+                smtp_password = '41PhY7Grn4d2xt07N4hd'
                 # Создание сообщения
-                sender_email = 'dimdim.ua@mail.ru'
+                sender_email = 'dyomdiftest@mail.ru'
                 receiver_email = row[1]
                 subject = 'Password Recovering'
                 body = row[2]
