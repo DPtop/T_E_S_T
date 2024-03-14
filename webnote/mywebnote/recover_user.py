@@ -1,8 +1,9 @@
 import sqlite3
 from urllib.parse import unquote
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+# import smtplib
+# from email.mime.text import MIMEText
+# from email.mime.multipart import MIMEMultipart
+from django.core.mail import send_mail
 
 
 nick_name = str('')
@@ -40,25 +41,32 @@ def RecoverUser(request):
         result = cur.execute("SELECT username, email, password FROM auth_user;")
         for row in result.fetchall():
             if row[0] == nick_name and row[1] == e_mail:
-                # Настройки SMTP сервера
-                smtp_server = 'smtp.mail.ru'
-                smtp_port = 587
-                smtp_username = 'dyomdiftest@mail.ru'
-                smtp_password = '41PhY7Grn4d2xt07N4hd'
-                # Создание сообщения
-                sender_email = 'dyomdiftest@mail.ru'
-                receiver_email = row[1]
-                subject = 'Password Recovering'
-                body = row[2]
-                #
-                message = MIMEMultipart()
-                message['From'] = sender_email
-                message['To'] = receiver_email
-                message['Subject'] = subject
-                message.attach(MIMEText(body, 'plain'))
-                # Отправка письма
-                with smtplib.SMTP(smtp_server, smtp_port) as server:
-                    server.starttls()
-                    server.login(smtp_username, smtp_password)
-                    text = message.as_string()
-                    server.sendmail(sender_email, receiver_email, text)
+                # # Настройки SMTP сервера
+                # smtp_server = 'smtp.mail.ru'
+                # smtp_port = 587
+                # smtp_username = 'dyomdiftest@mail.ru'
+                # smtp_password = '41PhY7Grn4d2xt07N4hd'
+                # # Создание сообщения
+                # sender_email = 'dyomdiftest@mail.ru'
+                # receiver_email = row[1]
+                # subject = 'Password Recovering'
+                # body = row[2]
+                # #
+                # message = MIMEMultipart()
+                # message['From'] = sender_email
+                # message['To'] = receiver_email
+                # message['Subject'] = subject
+                # message.attach(MIMEText(body, 'plain'))
+                # # Отправка письма
+                # with smtplib.SMTP(smtp_server, smtp_port) as server:
+                #     server.starttls()
+                #     server.login(smtp_username, smtp_password)
+                #     text = message.as_string()
+                #     server.sendmail(sender_email, receiver_email, text)
+                send_mail(  # + настройки в settings
+                    'Subject: Password Recovering',
+                    row[2],
+                    'dyomdiftest@mail.ru',
+                    [row[1]],
+                    fail_silently=False,
+                )
