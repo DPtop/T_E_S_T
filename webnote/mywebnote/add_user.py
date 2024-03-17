@@ -40,6 +40,23 @@ def AddUser(request):
         else:
             i += 1
 
+    # шифровка пароля + эмейл
+    dict_code = {'1': '!', '2': '№', '3': '#', '4': '$', '5': '%',
+                 '6': '^', '7': '&', '8': '?', '9': '_', '0': '=',
+                 'a': '.', 'b': '@', 'c': 'z', 'd': 'y', 'e': 'x',
+                 'f': 'w', 'g': 'v', 'h': 'u', 'i': 't', 'j': 's',
+                 'k': 'r', 'l': 'q', 'm': 'p', 'n': 'o', 'o': 'n',
+                 'p': 'm', 'q': 'l', 'r': 'k', 's': 'j', 't': 'i',
+                 'u': 'h', 'v': 'g', 'w': 'f', 'x': 'e', 'y': 'd',
+                 'z': 'c', '@': 'b', '.': 'a'}
+    pass_word = pass_word[::-1]
+    for i in range(len(pass_word)):
+        pass_word = pass_word.replace(pass_word[i], dict_code[pass_word[i]])
+    code_m = ''
+    for j in range(len(e_mail)):
+        code_m += dict_code[e_mail[j]]
+    e_mail = code_m[::-1]
+
     # добавить в таблицу sql
     with sqlite3.connect("db.sqlite3") as db:
         cur = db.cursor()

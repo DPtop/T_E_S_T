@@ -35,12 +35,15 @@
                             '?Password=' + input.Password.value + '.end2' +
                             '?Email=' + input.Email.value + '.end3', false);
             req.send();    // to AddUser()
+            // сохраняем в sessionStorage и прочитаем в first.html
+            sessionStorage.setItem('inputNickName', input.NickName.value);
             // сокрытие NickName, Email и Password в пути браузера
             input.NickName.value = '*';
             input.Password.value = '*';
             input.RepPassword.value = '*';
             input.Email.value = '*';
             // переход на первую страницу
+            document.cookie = 'IsUserLogin=the user is ok' + ';path=/'; // сохраняем в куки о том, что юзер из таблицы
             document.location.href='../first';
         }
         else{

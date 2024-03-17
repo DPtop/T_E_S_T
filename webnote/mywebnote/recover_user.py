@@ -4,6 +4,7 @@ from urllib.parse import unquote
 # from email.mime.text import MIMEText
 # from email.mime.multipart import MIMEMultipart
 from django.core.mail import send_mail
+from mywebnote.check_user import cypher
 
 
 nick_name = str('')
@@ -40,7 +41,24 @@ def RecoverUser(request):
         cur = db.cursor()
         result = cur.execute("SELECT username, email, password FROM auth_user;")
         for row in result.fetchall():
-            if row[0] == nick_name and row[1] == e_mail:
+            # дешифровка эмейла
+            dict_code = {'1': '!', '2': '№', '3': '#', '4': '$', '5': '%',
+                         '6': '^', '7': '&', '8': '?', '9': '_', '0': '=',
+                         'a': '.', 'b': '@', 'c': 'z', 'd': 'y', 'e': 'x',
+                         'f': 'w', 'g': 'v', 'h': 'u', 'i': 't', 'j': 's',
+                         'k': 'r', 'l': 'q', 'm': 'p', 'n': 'o', 'o': 'n',
+                         'p': 'm', 'q': 'l', 'r': 'k', 's': 'j', 't': 'i',
+                         'u': 'h', 'v': 'g', 'w': 'f', 'x': 'e', 'y': 'd',
+                         'z': 'c', '@': 'b', '.': 'a'}
+            cypher_eml = ''
+            cypher_eml_row1 = row[1]
+            for i in range(len(row[1])):
+                cypher_eml += dict_code[cypher_eml_row1[i]]
+            cypher_eml = cypher_eml[::-1]
+            #
+            psw = cypher(row[2])
+            #
+            if row[0] == nick_name and cypher_eml == e_mail:
                 # # Настройки SMTP сервера
                 # smtp_server = 'smtp.mail.ru'
                 # smtp_port = 587
@@ -63,10 +81,10 @@ def RecoverUser(request):
                 #     server.login(smtp_username, smtp_password)
                 #     text = message.as_string()
                 #     server.sendmail(sender_email, receiver_email, text)
-                send_mail(  # + настройки в settings
+                send_mail(  # меньше строк, но + настройки в settings
                     'Subject: Password Recovering',
-                    row[2],
+                    psw,
                     'dyomdiftest@mail.ru',
-                    [row[1]],
+                    [cypher_eml],
                     fail_silently=False,
                 )
