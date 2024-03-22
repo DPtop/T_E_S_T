@@ -127,7 +127,7 @@
             link.setAttribute('href', '../login');
         }
 
-        // очистка куки при Logout
+        // очистка куки и sessionStorage при Logout
         function FuncLogOUT() {
             if (elementChange.textContent === 'Выйти'){
                 document.cookie.split(";").forEach(function(cookie) {

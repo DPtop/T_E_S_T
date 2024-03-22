@@ -1,6 +1,7 @@
 let sumDishOrder = sessionStorage.getItem('sumDish');
+let priceDishOrder = sessionStorage.getItem('totalPrice');
 
-console.log('sumDishOrder', sumDishOrder);
+console.log('priceDishOrder', priceDishOrder);
 
 function sumOrder(){
     // Отображаем кнопку buttonClearOrder
@@ -50,11 +51,17 @@ function sumOrder(){
                 document.body.appendChild(divElement);
             }
         };
+        // Создаем элемент с общеё ценой заказа
+        let priceElement = document.createElement('p');
+        priceElement.textContent = 'на сумму: ' + priceDishOrder;
+        divElement.appendChild(priceElement);
+        document.body.appendChild(divElement);
     }
 }
 
 function dishClear(){
     // Очистить sumDish
     sessionStorage.setItem('sumDish', null);
+    sessionStorage.setItem('totalPrice', null);
     location.reload();
 }

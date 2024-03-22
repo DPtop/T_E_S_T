@@ -127,16 +127,17 @@ function openModal() {
 
     // слогаем слово "копейка"
     if (totalPrice > 0){
-        singNumber = Math.round(totalPrice) % 10;
-        tensNumber = parseInt((Math.round(totalPrice) % 100 - singNumber) / 10);
+        totalPrice = Math.round(totalPrice)
+        singNumber = totalPrice % 10;
+        tensNumber = parseInt((totalPrice % 100 - singNumber) / 10);
         if (singNumber == 1 && [0, 2, 3, 4, 5, 6, 7, 8, 9].includes(tensNumber)){
-            show.innerHTML += '\nИтого: ' + Math.round(totalPrice) + ' копейка';
+            show.innerHTML += '\nИтого: ' + totalPrice + ' копейка';
         }
         else if ([2, 3, 4].includes(singNumber) && [0, 2, 3, 4, 5, 6, 7, 8, 9].includes(tensNumber)){
-            show.innerHTML += '\nИтого: ' + Math.round(totalPrice) + ' копейки';
+            show.innerHTML += '\nИтого: ' + totalPrice + ' копейки';
         }
         else{
-            show.innerHTML += '\nИтого: ' + Math.round(totalPrice) + ' копеек';
+            show.innerHTML += '\nИтого: ' + totalPrice + ' копеек';
         }
     }
     else {
@@ -193,5 +194,6 @@ function dishOrder() {
     sumDish = sumDish.split('-->');
     sumDish = sumDish[sumDish.length-2];
     sessionStorage.setItem('sumDish', sumDish);
+    sessionStorage.setItem('totalPrice', Math.round(totalPrice));
     dishCancel();
 }
